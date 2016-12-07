@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="11201" systemVersion="16A323" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11161"/>
+        <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="BaseView169" customModule="MGTV_Swift" customModuleProvider="target">
+            <connections>
+                <outlet property="descLabel" destination="BUm-25-foQ" id="fsY-O3-giA"/>
+                <outlet property="imageView" destination="02Y-8Y-BSc" id="PqS-A6-fLo"/>
+                <outlet property="nameLabel" destination="n8L-Lb-dTb" id="vgp-oY-5kb"/>
+                <outlet property="rightCornerLabel" destination="a3c-PO-WZP" id="ByA-ef-DBc"/>
+                <outlet property="updateLabel" destination="UCs-CA-p2c" id="dF6-8N-WY2"/>
+                <outlet property="view" destination="iN0-l3-epB" id="8JQ-mS-KYM"/>
+            </connections>
+        </placeholder>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view contentMode="scaleToFill" id="iN0-l3-epB">
+            <rect key="frame" x="0.0" y="0.0" width="160" height="146"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="02Y-8Y-BSc">
+                    <color key="backgroundColor" red="0.87450980389999999" green="0.88235294119999996" blue="0.8980392157" alpha="1" colorSpace="calibratedRGB"/>
+                    <constraints>
+                        <constraint firstAttribute="width" secondItem="02Y-8Y-BSc" secondAttribute="height" multiplier="16:9" id="Mfz-dp-2GY"/>
+                    </constraints>
+                </imageView>
+                <label clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="name label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="n8L-Lb-dTb">
+                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                    <color key="textColor" red="0.20000000000000001" green="0.20000000000000001" blue="0.20000000000000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                    <nil key="highlightedColor"/>
+                </label>
+                <label clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="desc label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="BUm-25-foQ">
+                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="11"/>
+                    <color key="textColor" red="0.53333333333333333" green="0.53333333333333333" blue="0.53333333333333333" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                    <nil key="highlightedColor"/>
+                </label>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="update label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="UCs-CA-p2c" customClass="DesignLabel" customModule="MGTV_Swift" customModuleProvider="target">
+                    <fontDescription key="fontDescription" type="system" weight="medium" pointSize="10"/>
+                    <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    <nil key="highlightedColor"/>
+                    <userDefinedRuntimeAttributes>
+                        <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                            <real key="value" value="2"/>
+                        </userDefinedRuntimeAttribute>
+                        <userDefinedRuntimeAttribute type="color" keyPath="layerColor">
+                            <color key="value" red="0.0" green="0.0" blue="0.0" alpha="0.59999999999999998" colorSpace="custom" customColorSpace="sRGB"/>
+                        </userDefinedRuntimeAttribute>
+                        <userDefinedRuntimeAttribute type="number" keyPath="borderWidth">
+                            <real key="value" value="0.5"/>
+                        </userDefinedRuntimeAttribute>
+                        <userDefinedRuntimeAttribute type="color" keyPath="borderColor">
+                            <color key="value" red="1" green="1" blue="1" alpha="0.29921874999999998" colorSpace="custom" customColorSpace="sRGB"/>
+                        </userDefinedRuntimeAttribute>
+                    </userDefinedRuntimeAttributes>
+                </label>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="right corner" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="a3c-PO-WZP" customClass="DesignLabel" customModule="MGTV_Swift" customModuleProvider="target">
+                    <fontDescription key="fontDescription" type="system" pointSize="10"/>
+                    <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    <nil key="highlightedColor"/>
+                    <userDefinedRuntimeAttributes>
+                        <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                            <real key="value" value="2"/>
+                        </userDefinedRuntimeAttribute>
+                    </userDefinedRuntimeAttributes>
+                </label>
+            </subviews>
+            <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <constraints>
+                <constraint firstItem="02Y-8Y-BSc" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" id="71h-Zw-bc3"/>
+                <constraint firstAttribute="trailing" secondItem="BUm-25-foQ" secondAttribute="trailing" id="Ufg-8R-e7M"/>
+                <constraint firstItem="02Y-8Y-BSc" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="ZXM-Hg-Q6x"/>
+                <constraint firstItem="a3c-PO-WZP" firstAttribute="top" secondItem="02Y-8Y-BSc" secondAttribute="top" constant="3" id="b5h-BZ-Vu4"/>
+                <constraint firstItem="n8L-Lb-dTb" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="ezC-WC-ulc"/>
+                <constraint firstItem="n8L-Lb-dTb" firstAttribute="top" secondItem="02Y-8Y-BSc" secondAttribute="bottom" constant="6" id="gKd-75-YgA"/>
+                <constraint firstAttribute="bottom" secondItem="BUm-25-foQ" secondAttribute="bottom" id="i1m-Mj-aoa"/>
+                <constraint firstItem="UCs-CA-p2c" firstAttribute="trailing" secondItem="02Y-8Y-BSc" secondAttribute="trailing" constant="-3" id="l1W-fK-C2x"/>
+                <constraint firstAttribute="trailing" secondItem="02Y-8Y-BSc" secondAttribute="trailing" id="nze-5j-WhG"/>
+                <constraint firstAttribute="trailing" secondItem="n8L-Lb-dTb" secondAttribute="trailing" id="vvY-cp-LaK"/>
+                <constraint firstItem="BUm-25-foQ" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="wuZ-xU-SOu"/>
+                <constraint firstItem="a3c-PO-WZP" firstAttribute="trailing" secondItem="02Y-8Y-BSc" secondAttribute="trailing" constant="-3" id="xd7-0e-vhE"/>
+                <constraint firstItem="UCs-CA-p2c" firstAttribute="bottom" secondItem="02Y-8Y-BSc" secondAttribute="bottom" constant="-3" id="zwI-Hl-KFW"/>
+            </constraints>
+            <nil key="simulatedStatusBarMetrics"/>
+            <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+            <point key="canvasLocation" x="-65" y="-0.5"/>
+        </view>
+    </objects>
+</document>

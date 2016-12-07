@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="11201" systemVersion="15G1004" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11161"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="VerticalTemplateCell" id="Ulw-Tc-sec" customClass="VerticalTemplateCell" customModule="MGTV_Swift" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="320" height="226"/>
+            <autoresizingMask key="autoresizingMask"/>
+            <tableViewCellContentView key="contentView" multipleTouchEnabled="YES" contentMode="center" tableViewCell="Ulw-Tc-sec" id="Qk0-hk-Z9C">
+                <frame key="frameInset" width="320" height="226"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Gqs-dQ-nfb" customClass="BaseView57" customModule="MGTV_Swift" customModuleProvider="target">
+                        <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                    </view>
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="cIg-1C-8VF" customClass="BaseView57" customModule="MGTV_Swift" customModuleProvider="target">
+                        <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                    </view>
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="yN9-kH-S8X" customClass="BaseView57" customModule="MGTV_Swift" customModuleProvider="target">
+                        <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                    </view>
+                </subviews>
+                <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                <constraints>
+                    <constraint firstItem="yN9-kH-S8X" firstAttribute="leading" secondItem="cIg-1C-8VF" secondAttribute="trailing" constant="3" id="6VB-CR-owU"/>
+                    <constraint firstItem="Gqs-dQ-nfb" firstAttribute="top" secondItem="Qk0-hk-Z9C" secondAttribute="top" constant="5" id="7Hr-28-SDu"/>
+                    <constraint firstItem="Gqs-dQ-nfb" firstAttribute="leading" secondItem="Qk0-hk-Z9C" secondAttribute="leading" constant="3" id="DuZ-OH-lMU"/>
+                    <constraint firstItem="cIg-1C-8VF" firstAttribute="top" secondItem="Qk0-hk-Z9C" secondAttribute="top" constant="5" id="DwV-xR-5CR"/>
+                    <constraint firstAttribute="bottom" secondItem="cIg-1C-8VF" secondAttribute="bottom" constant="7" id="HLs-jv-fDQ"/>
+                    <constraint firstAttribute="bottom" secondItem="Gqs-dQ-nfb" secondAttribute="bottom" constant="7" id="QK6-Iv-vPT"/>
+                    <constraint firstItem="cIg-1C-8VF" firstAttribute="centerX" secondItem="Qk0-hk-Z9C" secondAttribute="centerX" id="Smr-b9-Ksm"/>
+                    <constraint firstItem="yN9-kH-S8X" firstAttribute="width" secondItem="Gqs-dQ-nfb" secondAttribute="width" id="ZYG-oa-L2j"/>
+                    <constraint firstAttribute="trailing" secondItem="yN9-kH-S8X" secondAttribute="trailing" constant="3" id="aR6-Dg-3f5"/>
+                    <constraint firstItem="cIg-1C-8VF" firstAttribute="leading" secondItem="Gqs-dQ-nfb" secondAttribute="trailing" constant="3" id="d9T-o8-JMa"/>
+                    <constraint firstItem="cIg-1C-8VF" firstAttribute="leading" secondItem="Gqs-dQ-nfb" secondAttribute="trailing" constant="3" id="g4a-s4-fXn"/>
+                    <constraint firstItem="cIg-1C-8VF" firstAttribute="width" secondItem="Gqs-dQ-nfb" secondAttribute="width" id="iYL-LA-9vs"/>
+                    <constraint firstAttribute="bottom" secondItem="yN9-kH-S8X" secondAttribute="bottom" constant="7" id="smX-MF-fyQ"/>
+                    <constraint firstItem="yN9-kH-S8X" firstAttribute="top" secondItem="Qk0-hk-Z9C" secondAttribute="top" constant="5" id="yig-Hg-e3D"/>
+                </constraints>
+                <variation key="default">
+                    <mask key="constraints">
+                        <exclude reference="d9T-o8-JMa"/>
+                    </mask>
+                </variation>
+            </tableViewCellContentView>
+            <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <connections>
+                <outletCollection property="baseViews" destination="Gqs-dQ-nfb" collectionClass="NSMutableArray" id="4pd-1f-4VS"/>
+                <outletCollection property="baseViews" destination="cIg-1C-8VF" collectionClass="NSMutableArray" id="tbE-5r-Htx"/>
+                <outletCollection property="baseViews" destination="yN9-kH-S8X" collectionClass="NSMutableArray" id="h1w-1r-qsQ"/>
+            </connections>
+            <point key="canvasLocation" x="-48" y="34"/>
+        </tableViewCell>
+    </objects>
+</document>
