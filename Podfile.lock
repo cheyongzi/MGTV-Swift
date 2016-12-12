@@ -1,0 +1,27 @@
+PODS:
+  - Alamofire (4.0.1)
+  - AlamofireObjectMapper (4.0.0):
+    - Alamofire (~> 4.0)
+    - ObjectMapper (~> 2.0)
+  - CCAutoScrollView (2.0.5)
+  - Kingfisher (3.2.1)
+  - ObjectMapper (2.2.1)
+  - SnapKit (3.0.2)
+
+DEPENDENCIES:
+  - AlamofireObjectMapper (~> 4.0)
+  - CCAutoScrollView (~> 2.0.5)
+  - Kingfisher (~> 3.0)
+  - SnapKit (~> 3.0.2)
+
+SPEC CHECKSUMS:
+  Alamofire: 7682d43245de14874acd142ec137b144aa1dd335
+  AlamofireObjectMapper: 9faa3ce5a240efda1b209009a2d6e1e949227abc
+  CCAutoScrollView: 3e1225f13d79be81652a67491454e28b01674068
+  Kingfisher: 64ef28c6d3d6f344e3ae2d7f5c9da80439505d99
+  ObjectMapper: 41e43e1a89f8060ef5ea5d04ba852e269a621d68
+  SnapKit: 2e456761aa92d4d4067a7a5594c18769d451a8ad
+
+PODFILE CHECKSUM: 40917b021bd172407d8ec2fcf161122591bde122
+
+COCOAPODS: 1.1.1

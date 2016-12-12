@@ -21,6 +21,28 @@ let defaultPlaceholder = "搜索视频、明星"
 class CustomSearchBar: UIView, UITextFieldDelegate {
     
     weak var delegate: CustomSearchBarDelegate?
+    
+    var requestPlaceholder: Bool = false {
+        didSet {
+            if requestPlaceholder {
+                SearchRecommendDataSource.fetchSearchRecommend(nil, complete: { [weak self] (response, error) in
+                    guard let searchRecommendResponse = response as? SearchRecommendResponse else {
+                        return
+                    }
+                    guard let searchRecommendItem = searchRecommendResponse.data?.first else {
+                        return
+                    }
+                    guard let recommendPlaceholder = searchRecommendItem.name else {
+                        return
+                    }
+                    if let strongSelf = self {
+                        strongSelf.placeholder = recommendPlaceholder
+                    }
+                    
+                })
+            }
+        }
+    }
 
     //text field is can edit
     var isCanEdit: Bool = false {

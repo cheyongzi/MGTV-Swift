@@ -9,6 +9,8 @@
 import UIKit
 
 class VIPViewController: UIViewController {
+    
+    var viewSource: TemplateTableViewSource!
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -16,23 +18,31 @@ class VIPViewController: UIViewController {
         view.backgroundColor = UIColor.white
         self.navigationItem.title = "VIP"
         
+        viewSource = TemplateTableViewSource(frame: view.bounds)
+        
+        view.addSubview(viewSource.tableView)
+        
+        self.fetch(["type" : "5", "version" : "5.0", "vclassId" : 68])
+        
         // Do any additional setup after loading the view.
+    }
+    
+    //MARK: - VIP频道接口的请求
+    func fetch(_ params: [String : Any]) {
+        TemplateDataSource.fetchTemplate(params: params){ [unowned self] (response, error) in
+            guard let templateResponse = response as? TemplateResponse else {
+                return
+            }
+            guard let datas = templateResponse.data else {
+                return
+            }
+            self.viewSource.dataArray = datas
+        }
     }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
-    
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
-    }
-    */
 
 }

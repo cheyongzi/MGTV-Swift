@@ -40,6 +40,7 @@ class BaseNavigationViewController: UINavigationController {
             rootViewController.navigationItem.leftBarButtonItem = self.barItem("navigantionBar_logo", frame: CGRect(x: 0, y: 0, width: 67, height: 20))
             let searchBar = CustomSearchBar.init(frame: CGRect(x: 0, y: 0, width: HNTVDeviceWidth-180, height: 30))
             searchBar.isCanEdit = false
+            searchBar.requestPlaceholder = true
             rootViewController.navigationItem.titleView = searchBar
         } else if (rootViewController.isKind(of: VIPViewController.self)) {
             let searchItem = self.barItem(imageName: "Vip_navigantionbar-search", frame: CGRect(x: 0, y: 0, width: 22, height: 22), selector: #selector(search))
