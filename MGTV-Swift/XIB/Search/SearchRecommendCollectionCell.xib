@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="11542" systemVersion="16B2555" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11524"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" restorationIdentifier="SearchRecommendCollectionCell" reuseIdentifier="SearchRecommendCollectionCell" id="gTV-IL-0wX" customClass="SearchRecommendCollectionCell" customModule="MGTV_Swift" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="145" height="50"/>
+            <autoresizingMask key="autoresizingMask"/>
+            <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
+                <rect key="frame" x="0.0" y="0.0" width="145" height="50"/>
+                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                <subviews>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="yih-XH-j7q">
+                        <rect key="frame" x="0.0" y="19" width="13" height="13"/>
+                        <color key="backgroundColor" red="0.62352941179999999" green="0.6588235294" blue="0.69411764710000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint firstAttribute="width" constant="13" id="J3B-Rz-Vnd"/>
+                            <constraint firstAttribute="height" constant="13" id="idV-2E-MZa"/>
+                        </constraints>
+                        <fontDescription key="fontDescription" type="system" pointSize="10"/>
+                        <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Udl-pR-LBe">
+                        <rect key="frame" x="22" y="0.0" width="123" height="50"/>
+                        <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                        <color key="textColor" red="0.20000000000000001" green="0.20000000000000001" blue="0.20000000000000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Mbe-fz-vJv">
+                        <rect key="frame" x="0.0" y="49" width="145" height="1"/>
+                        <color key="backgroundColor" red="0.95686274509803915" green="0.96078431372549022" blue="0.97647058823529409" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="1" id="WCr-4I-EuJ"/>
+                        </constraints>
+                    </view>
+                </subviews>
+            </view>
+            <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <constraints>
+                <constraint firstItem="Mbe-fz-vJv" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" id="0nQ-4B-Zmn"/>
+                <constraint firstAttribute="bottom" secondItem="Mbe-fz-vJv" secondAttribute="bottom" id="2xy-Pj-zaO"/>
+                <constraint firstAttribute="bottom" secondItem="Udl-pR-LBe" secondAttribute="bottom" id="57O-xV-FtA"/>
+                <constraint firstItem="yih-XH-j7q" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" id="Meu-zT-8y4"/>
+                <constraint firstItem="Udl-pR-LBe" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" id="drg-J9-aIs"/>
+                <constraint firstItem="Udl-pR-LBe" firstAttribute="leading" secondItem="yih-XH-j7q" secondAttribute="trailing" constant="9" id="fRO-Mr-XqR"/>
+                <constraint firstAttribute="trailing" secondItem="Mbe-fz-vJv" secondAttribute="trailing" id="iDI-8s-aGE"/>
+                <constraint firstAttribute="trailing" secondItem="Udl-pR-LBe" secondAttribute="trailing" id="mcT-Ib-qTK"/>
+                <constraint firstItem="yih-XH-j7q" firstAttribute="centerY" secondItem="gTV-IL-0wX" secondAttribute="centerY" id="qcb-tT-tEl"/>
+            </constraints>
+            <connections>
+                <outlet property="nameLabel" destination="Udl-pR-LBe" id="mpz-uT-sBu"/>
+                <outlet property="rankLabel" destination="yih-XH-j7q" id="sY3-co-9gk"/>
+            </connections>
+            <point key="canvasLocation" x="-238.5" y="46"/>
+        </collectionViewCell>
+    </objects>
+</document>

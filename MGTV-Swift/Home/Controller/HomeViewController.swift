@@ -14,6 +14,13 @@ class HomeViewController: UIViewController {
     let dataManager = TemplateDataManager.dataManager
     //MARK: - CollectionViewSource collection cell reload method
     var viewSource: TemplateCollectionViewSource!
+    //MARK: - SearchBar
+    let searchBar: CustomSearchBar = {
+        let searchBar = CustomSearchBar.init(frame: CGRect(x: 0, y: 0, width: HNTVDeviceWidth-180, height: 30))
+        searchBar.isCanEdit = false
+        searchBar.requestPlaceholder = true
+        return searchBar
+    }()
     
     var data: String?
 
@@ -53,6 +60,13 @@ class HomeViewController: UIViewController {
         self.fetch(["type" : "5", "version" : "5.0", "vclassId" : 60])
     }
     
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        
+        searchBar.delegate = self
+        navigationItem.titleView = searchBar
+    }
+    
     //MARK: - 首页接口的请求
     func fetch(_ params: [String : Any]) {
         TemplateDataSource.fetchTemplate(params: params){ [unowned self] (response, error) in
@@ -80,5 +94,14 @@ extension HomeViewController: TemplateCollectionViewSourceDelegate {
     //MARK: - TemplateCollectionView Source delegate
     func fetchTemplate(params: [String : Any]) {
         self.fetch(params)
+    }
+}
+
+extension HomeViewController: CustomSearchBarDelegate {
+    func touchAction(text: String?) {
+        let searchController = SearchViewController()
+        searchController.hidesBottomBarWhenPushed = true
+        searchController.placeholder = text
+        self.navigationController?.pushViewController(searchController, animated: true)
     }
 }

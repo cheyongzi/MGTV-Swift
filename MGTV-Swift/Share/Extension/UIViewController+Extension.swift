@@ -16,20 +16,25 @@ extension UIViewController {
         return barItem
     }
     
-    func barItem(imageName: String, frame: CGRect, selector: Selector) -> UIBarButtonItem {
+    func barItem(imageName: String, frame: CGRect, selector: Selector?) -> UIBarButtonItem {
         let button = UIButton(type: .custom)
         button.frame = frame
         button.setImage(UIImage(named: imageName), for: .normal)
-        button.addTarget(self, action: selector, for: .touchUpInside)
+        if let sel = selector {
+            button.addTarget(self, action: sel, for: .touchUpInside)
+        }
         let item = UIBarButtonItem(customView: button)
         return item
     }
     
-    func barItem(title: String, frame: CGRect, selector: Selector) -> UIBarButtonItem {
+    func barItem(title: String, frame: CGRect, selector: Selector?) -> UIBarButtonItem {
         let button = UIButton(type: .custom)
         button.frame = frame
         button.setAttributedTitle(NSAttributedString(string: title, attributes: [NSForegroundColorAttributeName : UIColor.white, NSFontAttributeName : UIFont.systemFont(ofSize: 15)]), for: .normal)
-        button.addTarget(self, action: selector, for: .touchUpInside)
+        if let sel = selector {
+            button.addTarget(self, action: sel, for: .touchUpInside)
+        }
+        
         let item = UIBarButtonItem(customView: button)
         return item
     }

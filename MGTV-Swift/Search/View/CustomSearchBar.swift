@@ -11,17 +11,27 @@ import SnapKit
 
 let defaultPlaceholder = "搜索视频、明星"
 
-@objc protocol CustomSearchBarDelegate {
-    @objc optional func search(text: String)
-    @objc optional func clear()
-    @objc optional func auto(text: String)
-    @objc optional func beginEdit()
+protocol CustomSearchBarDelegate: class {
+    func search(text: String?)
+    func clear()
+    func auto(text: String?)
+    func beginEdit()
+    func touchAction(text: String?)
+}
+
+extension CustomSearchBarDelegate {
+    func search(text: String?) { }
+    func clear() { }
+    func auto(text: String?) { }
+    func beginEdit() { }
+    func touchAction(text: String?) { }
 }
 
 class CustomSearchBar: UIView, UITextFieldDelegate {
     
     weak var delegate: CustomSearchBarDelegate?
     
+    /// placeholder网络请求进行展示，默认为false
     var requestPlaceholder: Bool = false {
         didSet {
             if requestPlaceholder {
@@ -45,7 +55,7 @@ class CustomSearchBar: UIView, UITextFieldDelegate {
     }
 
     //text field is can edit
-    var isCanEdit: Bool = false {
+    var isCanEdit: Bool = true {
         didSet {
             if isCanEdit {
                 textField.isUserInteractionEnabled = true
@@ -57,7 +67,6 @@ class CustomSearchBar: UIView, UITextFieldDelegate {
     //搜索框
     lazy private var textField: UITextField = { [unowned self] in
         let field = UITextField()
-        field.attributedPlaceholder = NSAttributedString.init(string: defaultPlaceholder, attributes: [NSForegroundColorAttributeName : UIColor(red: 102.0/255, green: 102.0/255, blue: 102.0/255, alpha: 1.0)])
         field.font = UIFont.systemFont(ofSize: 13)
         field.clearButtonMode = .always
         field.returnKeyType = .search
@@ -106,6 +115,7 @@ class CustomSearchBar: UIView, UITextFieldDelegate {
         super.awakeFromNib()
         
         self.initSearchBar()
+        
     }
     
     //MARK: - UITextField Delegate
@@ -113,21 +123,21 @@ class CustomSearchBar: UIView, UITextFieldDelegate {
         if !isCanEdit {
             return false
         }
-        delegate?.beginEdit?()
+        delegate?.beginEdit()
         return true
     }
     
     func textFieldShouldClear(_ textField: UITextField) -> Bool {
-        delegate?.clear?()
+        delegate?.clear()
         return true
     }
     
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         if textField.text != nil && textField.text != "" {
-            delegate?.search?(text: textField.text!)
+            delegate?.search(text: textField.text)
         } else {
             if textField.placeholder != nil && textField.placeholder != defaultPlaceholder {
-                delegate?.search?(text: textField.placeholder!)
+                delegate?.search(text: textField.placeholder)
             }
         }
         return true
@@ -136,7 +146,7 @@ class CustomSearchBar: UIView, UITextFieldDelegate {
     //MARK: - Touch action
     override func touchesEnded(_ touches: Set<UITouch>, with event: UIEvent?) {
         if !isCanEdit {
-            
+            delegate?.touchAction(text: textField.placeholder)
         }
     }
     
@@ -159,6 +169,8 @@ class CustomSearchBar: UIView, UITextFieldDelegate {
             make.width.height.equalTo(10)
             make.centerY.equalTo(self)
         }
+        
+        placeholder = defaultPlaceholder
     }
     
     //MARK: - Text filed status observer
@@ -168,23 +180,31 @@ class CustomSearchBar: UIView, UITextFieldDelegate {
     }
     
     @objc private func autoChange() {
-        delegate?.auto?(text: textField.text!)
+        delegate?.auto(text: textField.text)
     }
     
     //MARK: - Update constraints
     override func updateConstraints() {
         if isCanEdit {
-            textField.snp.updateConstraints({ (make) in
-                make.center.equalTo(self).offset(10)
+            textField.snp.removeConstraints()
+            textField.snp.makeConstraints({ (make) in
                 make.edges.equalTo(self).inset(UIEdgeInsets(top: 0, left: 20, bottom: 0, right: 0))
             })
+            
             textField.textAlignment = .left
         } else {
-            textField.snp.updateConstraints({ (make) in
+            textField.snp.removeConstraints()
+            textField.snp.makeConstraints({ (make) in
                 make.center.equalTo(self)
             })
             textField.textAlignment = .center
         }
         super.updateConstraints()
+    }
+    
+    //MARK: - Become First Responder
+    override func becomeFirstResponder() -> Bool {
+        textField.becomeFirstResponder()
+        return true
     }
 }
