@@ -8,30 +8,35 @@
 
 import UIKit
 
+class FourCircleCollectionViewModel: CollectionViewModel<TemplateResponseItem> {
+    override func cellConfig(_ view: UICollectionView, datas: [[TemplateResponseItem]], indexPath: IndexPath) -> UICollectionViewCell {
+        let cell = view.dequeueReusableCell(withReuseIdentifier: "CircleCollectionViewCell", for: indexPath)
+        guard let circleCell = cell as? CircleCollectionViewCell else {
+            return cell
+        }
+        circleCell.templateItem = datas[0][indexPath.row]
+        return circleCell
+    }
+    override var itemSize: CGSize { return CGSize(width: HNTVDeviceWidth/4, height: 0)}
+}
+
 class FourCircleCell: TemplateBaseTableViewCell {
     
-    lazy var averageSource: AverageCollectionViewModel = AverageCollectionViewModel("CircleCollectionViewCell", data: [], configCell: { [unowned self] (cell, data) in
-        guard let itemData = data as? TemplateResponseItem else {
-            return
-        }
-        
-        guard let circleCell = cell as? CircleCollectionViewCell else {
-            return
-        }
-        
-        circleCell.templateItem = itemData
-    })
+    let circleViewModel = FourCircleCollectionViewModel([])
     
     @IBOutlet weak var collectionView: UICollectionView!
     override func awakeFromNib() {
         super.awakeFromNib()
         collectionView.register(UINib(nibName: "CircleCollectionViewCell", bundle: nil), forCellWithReuseIdentifier: "CircleCollectionViewCell")
-        collectionView.dataSource = averageSource
-        collectionView.delegate = averageSource
+        collectionView.dataSource = circleViewModel
+        collectionView.delegate = circleViewModel
     }
     
     override func configResponse(responseData: TemplateResponseData?, indexPath: IndexPath?) {
-        averageSource.dataArray = responseData?.moduleData
+        guard let datas = responseData?.moduleData else {
+            return
+        }
+        circleViewModel.datas = [datas]
         collectionView.reloadData()
     }
     

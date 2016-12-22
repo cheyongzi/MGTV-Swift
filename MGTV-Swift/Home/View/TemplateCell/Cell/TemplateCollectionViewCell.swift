@@ -11,15 +11,15 @@ import UIKit
 class TemplateCollectionViewCell: UICollectionViewCell {
     
     //MARK: - TableViewSource
-    lazy var tableViewSource: TemplateTableViewSource = {
-        let tableViewSource = TemplateTableViewSource.init(frame: self.bounds)
-        return tableViewSource
-    }()
+    let homeTableViewModel: HomeTableViewModel = HomeTableViewModel([])
+    
     //MARK: - Init method
     override init(frame: CGRect) {
         super.init(frame: frame);
         
-        self.addSubview(self.tableViewSource.tableView)
+        homeTableViewModel.tableView.frame = self.bounds
+        
+        self.addSubview(homeTableViewModel.tableView)
     }
     
     required init?(coder aDecoder: NSCoder) {
@@ -32,6 +32,7 @@ class TemplateCollectionViewCell: UICollectionViewCell {
         if let templateData = response {
             datas = templateData.data!
         }
-        self.tableViewSource.dataArray = datas
+        homeTableViewModel.datas = [datas]
+        homeTableViewModel.tableView.reloadData()
     }
 }

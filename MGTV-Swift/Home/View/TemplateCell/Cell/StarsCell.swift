@@ -8,26 +8,29 @@
 
 import UIKit
 
+class StarsCollectionViewModel: CollectionViewModel<StarDataInfo> {
+    override func cellConfig(_ view: UICollectionView, datas: [[StarDataInfo]], indexPath: IndexPath) -> UICollectionViewCell {
+        let cell = view.dequeueReusableCell(withReuseIdentifier: "StarCollectionViewCell", for: indexPath)
+        guard let starCell = cell as? StarCollectionViewCell else {
+            return cell
+        }
+        starCell.starInfo = datas[0][indexPath.row]
+        return starCell
+    }
+    
+    override var itemSize: CGSize { return CGSize(width: HNTVDeviceWidth/4, height: 123)}
+}
+
 class StarsCell: TemplateBaseTableViewCell {
 
-    lazy var averageSource: AverageCollectionViewModel = AverageCollectionViewModel("StarCollectionViewCell", data: [], configCell: { [unowned self] (cell, data) in
-        guard let itemData = data as? StarDataInfo else {
-            return
-        }
-        
-        guard let starCell = cell as? StarCollectionViewCell else {
-            return
-        }
-        
-        starCell.starInfo = itemData
-    }, itemHeight:123)
+    let starViewModel = StarsCollectionViewModel([])
     
     @IBOutlet weak var collectionView: UICollectionView!
     override func awakeFromNib() {
         super.awakeFromNib()
         collectionView.register(UINib(nibName: "StarCollectionViewCell", bundle: nil), forCellWithReuseIdentifier: "StarCollectionViewCell")
-        collectionView.dataSource = averageSource
-        collectionView.delegate = averageSource
+        collectionView.dataSource = starViewModel
+        collectionView.delegate = starViewModel
     }
     
     override func configResponse(responseData: TemplateResponseData?, indexPath: IndexPath?) {
@@ -46,11 +49,11 @@ class StarsCell: TemplateBaseTableViewCell {
             }
         }
         
-        guard let starData = templateData.starData else {
+        guard let users = templateData.starData?.data?.users else {
             return
         }
         
-        averageSource.dataArray = starData.data?.users
+        starViewModel.datas = [users]
         collectionView.reloadData()
     }
 

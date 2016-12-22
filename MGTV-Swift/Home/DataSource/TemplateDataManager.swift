@@ -22,7 +22,7 @@ class TemplateDataManager {
     /// 获取本地管理的频道列表数据
     ///
     /// - returns: Array ChannelResponseData
-    func channelDatas() -> [ChannelResponseData]? {
+    func channelDatas() -> [ChannelResponseData] {
         return channels
     }
     

@@ -40,47 +40,31 @@ let TemplateCellIndentiferDic: [String : (String, Int)] =
 
 import UIKit
 
-class TemplateTableViewSource: NSObject, UITableViewDelegate, UITableViewDataSource{
-
-    var dataArray: [AnyObject] = [] {
-        didSet {
-            tableView.reloadData()
+class HomeTableViewModel: TableViewModel<TemplateResponseData> {
+    
+    lazy var tableView: UITableView = {
+        let tableView = UITableView()
+        tableView.separatorStyle = .none
+        for (identifier, _) in TemplateCellIndentiferDic.values {
+            tableView.register(UINib(nibName: identifier, bundle: nil), forCellReuseIdentifier: identifier)
         }
-    }
-    
-    public private(set) var tableView: UITableView!
-    
-    init(frame: CGRect) {
-        super.init()
+        tableView.delegate = self
+        tableView.dataSource = self
+        tableView.clipsToBounds = false
         
-        closure {
-            tableView = UITableView(frame: frame)
-            tableView.separatorStyle = .none
-            for (identifier, _) in TemplateCellIndentiferDic.values {
-                tableView.register(UINib(nibName: identifier, bundle: nil), forCellReuseIdentifier: identifier)
-            }
-            tableView.delegate = self
-            tableView.dataSource = self
-            tableView.clipsToBounds = false
-        }
+        return tableView
+    }()
+    
+    override func caculateHeight(_ indexPath: IndexPath) -> CGFloat {
+        let type = moduleType(datas[0][indexPath.row])
+        return height(type)
     }
     
-    //MARK: - UITableView Delegate
-    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        let moduleType = self.moduleType(indexPath: indexPath)
-        return self.height(moduleType: moduleType)
-    }
-    
-    //MARK: - UITableView Data Source
-    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return dataArray.count
-    }
-    
-    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let moduleType = self.moduleType(indexPath: indexPath)
-        let cell = tableView.dequeueReusableCell(withIdentifier: self.identifier(moduleType: moduleType), for: indexPath)
+    override func cellConfig(_ view: UITableView, datas: [[TemplateResponseData]], indexPath: IndexPath) -> UITableViewCell {
+        let type = moduleType(datas[0][indexPath.row])
+        let cell = tableView.dequeueReusableCell(withIdentifier: identifier(type), for: indexPath)
         if let baseCell = cell as? TemplateBaseTableViewCell {
-            let responseData = dataArray[indexPath.row] as? TemplateResponseData
+            let responseData = datas[0][indexPath.row]
             baseCell.configResponse(responseData: responseData, indexPath: indexPath)
         }
         
@@ -88,24 +72,21 @@ class TemplateTableViewSource: NSObject, UITableViewDelegate, UITableViewDataSou
     }
     
     //MARK: - 根据位置获取对应的cell的样式
-    func identifier(moduleType: String) -> String {
+    private func identifier(_ moduleType: String) -> String {
         if let (identifier, _) = TemplateCellIndentiferDic[moduleType] {
             return identifier;
         }
         return "TemplateBaseTableViewCell"
     }
     
-    func height(moduleType: String) -> CGFloat {
+    private func height(_ moduleType: String) -> CGFloat {
         if let (_, height) = TemplateCellIndentiferDic[moduleType] {
             return CGFloat(height)
         }
         return 0;
     }
     
-    func moduleType(indexPath: IndexPath) -> String {
-        guard let data = dataArray[indexPath.row] as? TemplateResponseData else {
-            return "basecell"
-        }
+    private func moduleType(_ data: TemplateResponseData) -> String {
         guard let identifer = data.moduleType else {
             return "basecell"
         }

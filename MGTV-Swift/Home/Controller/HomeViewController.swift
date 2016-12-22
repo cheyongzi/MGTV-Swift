@@ -11,9 +11,8 @@ import Alamofire
 import CCAutoScrollView
 
 class HomeViewController: UIViewController {
-    let dataManager = TemplateDataManager.dataManager
     //MARK: - CollectionViewSource collection cell reload method
-    var viewSource: TemplateCollectionViewSource!
+    let viewModel: HomeCollectionViewModel = HomeCollectionViewModel([TemplateDataManager.dataManager.channelDatas()])
     //MARK: - SearchBar
     let searchBar: CustomSearchBar = {
         let searchBar = CustomSearchBar.init(frame: CGRect(x: 0, y: 0, width: HNTVDeviceWidth-180, height: 30))
@@ -32,28 +31,11 @@ class HomeViewController: UIViewController {
         
         self.automaticallyAdjustsScrollViewInsets = false
         
-        closure {
-            viewSource = TemplateCollectionViewSource("TemplateCollectionViewCell", data: []) { [unowned self] (cell, data) in
-                guard let channelData = data as? ChannelResponseData else {
-                    return
-                }
-                guard let collectionCell = cell as? TemplateCollectionViewCell else {
-                    return
-                }
-                guard let channelId = channelData.vclassId else {
-                    return
-                }
-                collectionCell.tableViewSource.tableView.setContentOffset(CGPoint(x: 0, y: self.dataManager.offset(channelId)), animated: false)
-                let templateResponse = self.dataManager.template(channelId: channelId)
-                self.dataManager.currentChannelId = channelId
-                collectionCell.configCell(response: templateResponse)
-            }
-            viewSource.dataArray = dataManager.channelDatas()
-            viewSource.viewSourceDelegate = self
-        }
-        view.addSubview(viewSource.collectionView)
+        viewModel.viewSourceDelegate = self
         
-        view.addSubview(viewSource.segment)
+        view.addSubview(viewModel.collectionView)
+        
+        view.addSubview(viewModel.segment)
         
         TemplateDataSource.fetchChannel()
         
@@ -77,8 +59,8 @@ class HomeViewController: UIViewController {
                 return
             }
             templateResponse.lastRequestTime = Date()
-            self.dataManager.storeResponse(templateResponse, channelId: channelId)
-            self.viewSource.collectionView.reloadData()
+            TemplateDataManager.dataManager.storeResponse(templateResponse, channelId: channelId)
+            self.viewModel.collectionView.reloadData()
         }
     }
     

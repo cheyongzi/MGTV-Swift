@@ -18,8 +18,8 @@ extension TemplateCollectionViewSourceDelegate {
     }
 }
 
-class TemplateCollectionViewSource: PageCollectionViewModel, ChannelSegmentViewDelegate {
-
+class HomeCollectionViewModel: CollectionViewModel<ChannelResponseData>, ChannelSegmentViewDelegate {
+    
     weak var viewSourceDelegate: TemplateCollectionViewSourceDelegate?
     
     //MARK: - CollectionView
@@ -34,24 +34,37 @@ class TemplateCollectionViewSource: PageCollectionViewModel, ChannelSegmentViewD
         collectionView.clipsToBounds = false;
         collectionView.delegate = self;
         collectionView.dataSource = self;
-        collectionView.backgroundColor = UIColor.white
-        collectionView.register(TemplateCollectionViewCell.self, forCellWithReuseIdentifier: self.identifier)
+        collectionView.backgroundColor = UIColor.red
+        collectionView.register(TemplateCollectionViewCell.self, forCellWithReuseIdentifier: "TemplateCollectionViewCell")
         return collectionView;
-    }()
+        }()
     
     lazy public private(set) var segment: ChannelSegmentView = self.initSegment()
     
     private func initSegment() -> ChannelSegmentView {
         let segmentView = ChannelSegmentView(frame: CGRect(x: 0, y: 64, width: HNTVDeviceWidth, height: 36))
-        var datas: [String] = []
-        if let channels = dataArray as? [ChannelResponseData] {
-            for channelData in channels {
-                datas.append(channelData.title ?? "")
-            }
+        var channelTitleDatas: [String] = []
+        for channelData in datas[0] {
+            channelTitleDatas.append(channelData.title ?? "")
         }
-        segmentView.datas = datas
+        segmentView.datas = channelTitleDatas
         segmentView.delegate = self
         return segmentView
+    }
+    
+    override func cellConfig(_ view: UICollectionView, datas: [[ChannelResponseData]], indexPath: IndexPath) -> UICollectionViewCell {
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "TemplateCollectionViewCell", for: indexPath)
+        guard let collectionCell = cell as? TemplateCollectionViewCell else {
+            return cell
+        }
+        guard let channelId = datas[indexPath.section][indexPath.row].vclassId else  {
+            return cell
+        }
+        collectionCell.homeTableViewModel.tableView.setContentOffset(CGPoint(x: 0, y: TemplateDataManager.dataManager.offset(channelId)), animated: false)
+        let templateResponse = TemplateDataManager.dataManager.template(channelId: channelId)
+        TemplateDataManager.dataManager.currentChannelId = channelId
+        collectionCell.configCell(response: templateResponse)
+        return collectionCell
     }
     
     //MARK: - UIScollView delegate
@@ -59,7 +72,7 @@ class TemplateCollectionViewSource: PageCollectionViewModel, ChannelSegmentViewD
         let index = Int(scrollView.contentOffset.x / scrollView.frame.width)
         let cell = collectionView.cellForItem(at: IndexPath(item: index, section: 0))
         if let homeCell = cell as? TemplateCollectionViewCell {
-            TemplateDataManager.dataManager.storeOffset(homeCell.tableViewSource.tableView.contentOffset.y, channelId: TemplateDataManager.dataManager.currentChannelId)
+            TemplateDataManager.dataManager.storeOffset(homeCell.homeTableViewModel.tableView.contentOffset.y, channelId: TemplateDataManager.dataManager.currentChannelId)
         }
         
     }
@@ -76,31 +89,30 @@ class TemplateCollectionViewSource: PageCollectionViewModel, ChannelSegmentViewD
     private func scrollEnded(_ scrollView: UIScrollView) {
         let index = Int(scrollView.contentOffset.x / scrollView.bounds.width)
         segment.move(index)
-        if let channelData = dataArray[index] as? ChannelResponseData {
-            guard let channelId = channelData.vclassId else {
-                return
-            }
-            
-            /// 判断接口数据是否失效
-            let response = TemplateDataManager.dataManager.template(channelId: channelId)
-            if response != nil {
-                if let lastRequestTime = response?.lastRequestTime {
-                    let timeInterval = Date().timeIntervalSince(lastRequestTime)
-                    guard timeInterval > 500 else {
-                        return
-                    }
+        let channelData = datas[0][index]
+        guard let channelId = channelData.vclassId else {
+            return
+        }
+        
+        /// 判断接口数据是否失效
+        let response = TemplateDataManager.dataManager.template(channelId: channelId)
+        if response != nil {
+            if let lastRequestTime = response?.lastRequestTime {
+                let timeInterval = Date().timeIntervalSince(lastRequestTime)
+                guard timeInterval > 500 else {
+                    return
                 }
             }
-            TemplateDataManager.dataManager.storeOffset(0, channelId: channelId)
-            self.viewSourceDelegate?.fetchTemplate(params: ["type" : "5", "version" : "5.0", "vclassId" : channelId])
         }
+        TemplateDataManager.dataManager.storeOffset(0, channelId: channelId)
+        self.viewSourceDelegate?.fetchTemplate(params: ["type" : "5", "version" : "5.0", "vclassId" : channelId])
     }
     
     //MARK: - ChannelSegmentView Delegate
     func select(_ fromIndex: Int, toIndex: Int) {
         let cell = collectionView.cellForItem(at: IndexPath(item: fromIndex, section: 0))
         if let homeCell = cell as? TemplateCollectionViewCell {
-            TemplateDataManager.dataManager.storeOffset(homeCell.tableViewSource.tableView.contentOffset.y, channelId: TemplateDataManager.dataManager.currentChannelId)
+            TemplateDataManager.dataManager.storeOffset(homeCell.homeTableViewModel.tableView.contentOffset.y, channelId: TemplateDataManager.dataManager.currentChannelId)
         }
         collectionView.scrollToItem(at: IndexPath(item: toIndex, section: 0), at: .centeredHorizontally, animated: true)
     }

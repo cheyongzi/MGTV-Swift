@@ -13,7 +13,7 @@ struct RecommondDataSource {
         guard let templateData = params["template"] as? TemplateResponseData else {
             return
         }
-        let request = MGTVNetwork.shareInstance.request(path: "mobile/user",parameters: ["channelId" : TemplateDataManager.dataManager.currentChannelId], enableCache: true, URLHost: "http://rc.mgtv.com/")
+        let request = MGTVNetwork.shareInstance.request(path: "mobile/user",parameters: ["channelId" : TemplateDataManager.dataManager.currentChannelId], URLHost: "http://rc.mgtv.com/")
         request.startRequest(RecommondResponse.self) { (response, error) in
             guard !(error != nil), let guessResponse = response else {
                 templateData.redirectStatus = 3
@@ -31,7 +31,7 @@ struct RecommondDataSource {
         guard let templateData = params["template"] as? TemplateResponseData else {
             return
         }
-        let request = MGTVNetwork.shareInstance.request(path: "mobile/rank",parameters: ["channelId" : TemplateDataManager.dataManager.currentChannelId], enableCache: true, URLHost: "http://rc.mgtv.com/")
+        let request = MGTVNetwork.shareInstance.request(path: "mobile/rank",parameters: ["channelId" : TemplateDataManager.dataManager.currentChannelId], URLHost: "http://rc.mgtv.com/")
         request.startRequest(RecommondResponse.self) { (response, error) in
             guard !(error != nil), let rankResponse = response else {
                 templateData.redirectStatus = 3

@@ -19,7 +19,7 @@ struct TemplateDataSource {
     }
     
     static func fetchChannel() {
-        let request = MGTVNetwork.shareInstance.request(path: "odin/c1/channel/list", parameters: ["type" : "5", "version" : "5.0"], enableCache: true, URLHost: "http://mob.bz.mgtv.com/")
+        let request = MGTVNetwork.shareInstance.request(path: "odin/c1/channel/list", parameters: ["type" : "5", "version" : "5.0"], URLHost: "http://mob.bz.mgtv.com/")
         request.startRequest(ChannelResponse.self) { (response, error) in
             guard error == nil else {
                 return

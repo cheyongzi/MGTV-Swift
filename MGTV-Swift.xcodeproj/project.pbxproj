@@ -14,7 +14,6 @@
 		4504A2A81DB4B6320049127C /* CustomSearchBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4504A2A71DB4B6320049127C /* CustomSearchBar.swift */; };
 		4504A2AA1DB4D7A70049127C /* UIViewController+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4504A2A91DB4D7A70049127C /* UIViewController+Extension.swift */; };
 		4527AE461DACD26400D45D15 /* TemplateBaseTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4527AE441DACD26400D45D15 /* TemplateBaseTableViewCell.swift */; };
-		454401551DF55E5A00A9274F /* AverageCollectionViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 454401541DF55E5A00A9274F /* AverageCollectionViewModel.swift */; };
 		454401581DF5633100A9274F /* CircleCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 454401561DF5633100A9274F /* CircleCollectionViewCell.swift */; };
 		4544015B1DF5634C00A9274F /* CircleCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4544015A1DF5634C00A9274F /* CircleCollectionViewCell.xib */; };
 		455884771DFF95FB00FCC0E7 /* SearchHistoryCollectionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 455884751DFF95FB00FCC0E7 /* SearchHistoryCollectionCell.swift */; };
@@ -66,7 +65,6 @@
 		45A8CFEC1DB0DDCD005902D2 /* ChannelDefaultData.json in Resources */ = {isa = PBXBuildFile; fileRef = 45A8CFEB1DB0DDCD005902D2 /* ChannelDefaultData.json */; };
 		45B0C68D1DAB83B8003D2DD6 /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45B0C5FB1DAB83B8003D2DD6 /* HomeViewController.swift */; };
 		45B0C6BB1DAB83B9003D2DD6 /* BaseTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45B0C6441DAB83B8003D2DD6 /* BaseTabBarController.swift */; };
-		45B0C6BC1DAB83B9003D2DD6 /* PageCollectionViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45B0C6471DAB83B8003D2DD6 /* PageCollectionViewModel.swift */; };
 		45B0C6BD1DAB83B9003D2DD6 /* CommonExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45B0C6491DAB83B8003D2DD6 /* CommonExtension.swift */; };
 		45B0C6BE1DAB83B9003D2DD6 /* MGTVNetwork.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45B0C64B1DAB83B8003D2DD6 /* MGTVNetwork.swift */; };
 		45B0C6BF1DAB83B9003D2DD6 /* UserCenterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45B0C64E1DAB83B8003D2DD6 /* UserCenterViewController.swift */; };
@@ -87,6 +85,8 @@
 		45BFFE761DB8B66A00D89A26 /* VerticalTemplateCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 45BFFE6B1DB8B66A00D89A26 /* VerticalTemplateCell.xib */; };
 		45BFFE771DB8B66A00D89A26 /* VIPACCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 45BFFE6C1DB8B66A00D89A26 /* VIPACCell.xib */; };
 		45D09DE01E013CD9002BF578 /* SearchResult.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45D09DDF1E013CD9002BF578 /* SearchResult.swift */; };
+		45D81B2A1E0B7AEC0092C33C /* CollectionViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45D81B291E0B7AEC0092C33C /* CollectionViewModel.swift */; };
+		45D81B2C1E0B81D50092C33C /* TableViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45D81B2B1E0B81D50092C33C /* TableViewModel.swift */; };
 		45DDFA431DF6B65A002925A4 /* StarCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45DDFA411DF6B65A002925A4 /* StarCollectionViewCell.swift */; };
 		45DDFA461DF6B672002925A4 /* StarCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 45DDFA451DF6B672002925A4 /* StarCollectionViewCell.xib */; };
 		45DDFA481DF6B787002925A4 /* StarDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45DDFA471DF6B787002925A4 /* StarDataSource.swift */; };
@@ -148,7 +148,6 @@
 		4504A2A71DB4B6320049127C /* CustomSearchBar.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomSearchBar.swift; sourceTree = "<group>"; };
 		4504A2A91DB4D7A70049127C /* UIViewController+Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIViewController+Extension.swift"; sourceTree = "<group>"; };
 		4527AE441DACD26400D45D15 /* TemplateBaseTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TemplateBaseTableViewCell.swift; sourceTree = "<group>"; };
-		454401541DF55E5A00A9274F /* AverageCollectionViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AverageCollectionViewModel.swift; sourceTree = "<group>"; };
 		454401561DF5633100A9274F /* CircleCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CircleCollectionViewCell.swift; sourceTree = "<group>"; };
 		4544015A1DF5634C00A9274F /* CircleCollectionViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CircleCollectionViewCell.xib; sourceTree = "<group>"; };
 		455884751DFF95FB00FCC0E7 /* SearchHistoryCollectionCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SearchHistoryCollectionCell.swift; sourceTree = "<group>"; };
@@ -200,7 +199,6 @@
 		45A8CFEB1DB0DDCD005902D2 /* ChannelDefaultData.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = ChannelDefaultData.json; sourceTree = "<group>"; };
 		45B0C5FB1DAB83B8003D2DD6 /* HomeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
 		45B0C6441DAB83B8003D2DD6 /* BaseTabBarController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BaseTabBarController.swift; sourceTree = "<group>"; };
-		45B0C6471DAB83B8003D2DD6 /* PageCollectionViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PageCollectionViewModel.swift; sourceTree = "<group>"; };
 		45B0C6491DAB83B8003D2DD6 /* CommonExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CommonExtension.swift; sourceTree = "<group>"; };
 		45B0C64B1DAB83B8003D2DD6 /* MGTVNetwork.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MGTVNetwork.swift; sourceTree = "<group>"; };
 		45B0C64E1DAB83B8003D2DD6 /* UserCenterViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserCenterViewController.swift; sourceTree = "<group>"; };
@@ -221,6 +219,8 @@
 		45BFFE6B1DB8B66A00D89A26 /* VerticalTemplateCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = VerticalTemplateCell.xib; sourceTree = "<group>"; };
 		45BFFE6C1DB8B66A00D89A26 /* VIPACCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = VIPACCell.xib; sourceTree = "<group>"; };
 		45D09DDF1E013CD9002BF578 /* SearchResult.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SearchResult.swift; sourceTree = "<group>"; };
+		45D81B291E0B7AEC0092C33C /* CollectionViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CollectionViewModel.swift; sourceTree = "<group>"; };
+		45D81B2B1E0B81D50092C33C /* TableViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TableViewModel.swift; sourceTree = "<group>"; };
 		45DDFA411DF6B65A002925A4 /* StarCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StarCollectionViewCell.swift; sourceTree = "<group>"; };
 		45DDFA451DF6B672002925A4 /* StarCollectionViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = StarCollectionViewCell.xib; sourceTree = "<group>"; };
 		45DDFA471DF6B787002925A4 /* StarDataSource.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StarDataSource.swift; sourceTree = "<group>"; };
@@ -699,8 +699,8 @@
 		45B0C6461DAB83B8003D2DD6 /* BaseViewSource */ = {
 			isa = PBXGroup;
 			children = (
-				45B0C6471DAB83B8003D2DD6 /* PageCollectionViewModel.swift */,
-				454401541DF55E5A00A9274F /* AverageCollectionViewModel.swift */,
+				45D81B291E0B7AEC0092C33C /* CollectionViewModel.swift */,
+				45D81B2B1E0B81D50092C33C /* TableViewModel.swift */,
 			);
 			path = BaseViewSource;
 			sourceTree = "<group>";
@@ -926,7 +926,7 @@
 			isa = PBXProject;
 			attributes = {
 				LastSwiftUpdateCheck = 0730;
-				LastUpgradeCheck = 0800;
+				LastUpgradeCheck = 0820;
 				ORGANIZATIONNAME = "Che Yongzi";
 				TargetAttributes = {
 					45F6020D1D1A221300E58954 = {
@@ -1161,8 +1161,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				45D81B2A1E0B7AEC0092C33C /* CollectionViewModel.swift in Sources */,
 				45A8CFE91DB0DCCD005902D2 /* ChannelManager.swift in Sources */,
-				45B0C6BC1DAB83B9003D2DD6 /* PageCollectionViewModel.swift in Sources */,
 				45F602121D1A221300E58954 /* AppDelegate.swift in Sources */,
 				45A8CFAF1DAF3DC6005902D2 /* UIView+XIBExtension.swift in Sources */,
 				450042731DAB9198001070DE /* TemplateCollectionViewCell.swift in Sources */,
@@ -1175,6 +1175,7 @@
 				455884771DFF95FB00FCC0E7 /* SearchHistoryCollectionCell.swift in Sources */,
 				45A8CFAD1DAF31E6005902D2 /* BaseView169.swift in Sources */,
 				45A8CFB31DAF3E3A005902D2 /* FastCell.swift in Sources */,
+				45D81B2C1E0B81D50092C33C /* TableViewModel.swift in Sources */,
 				45A3C04D1DB5C3BB0040149E /* ChannelSegmentView.swift in Sources */,
 				454401581DF5633100A9274F /* CircleCollectionViewCell.swift in Sources */,
 				45A8CFCC1DAF79B7005902D2 /* TemplateResponse.swift in Sources */,
@@ -1189,7 +1190,6 @@
 				45E55E721DC1A532007886F6 /* CustomBannerAutoCell.swift in Sources */,
 				45A8CFBD1DAF3EC2005902D2 /* OneTemplateCell.swift in Sources */,
 				4558848B1E00F07700FCC0E7 /* SearchSuggest.swift in Sources */,
-				454401551DF55E5A00A9274F /* AverageCollectionViewModel.swift in Sources */,
 				45DDFA481DF6B787002925A4 /* StarDataSource.swift in Sources */,
 				45DDFA431DF6B65A002925A4 /* StarCollectionViewCell.swift in Sources */,
 				45B0C68D1DAB83B8003D2DD6 /* HomeViewController.swift in Sources */,
@@ -1365,12 +1365,11 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 789EE2A0FF0B7060A6061EE4 /* Pods-MGTV-Swift.debug.xcconfig */;
 			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = "$(inherited)";
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
-					"$(PROJECT_DIR)/Carthage/Build/iOS",
 					"$(PROJECT_DIR)",
 				);
 				INFOPLIST_FILE = "MGTV-Swift/Info.plist";
@@ -1386,12 +1385,11 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 1AB21E0E4E011B3DA2C27E41 /* Pods-MGTV-Swift.release.xcconfig */;
 			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = "$(inherited)";
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
-					"$(PROJECT_DIR)/Carthage/Build/iOS",
 					"$(PROJECT_DIR)",
 				);
 				INFOPLIST_FILE = "MGTV-Swift/Info.plist";

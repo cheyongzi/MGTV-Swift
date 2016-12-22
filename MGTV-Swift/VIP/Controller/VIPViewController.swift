@@ -10,7 +10,7 @@ import UIKit
 
 class VIPViewController: UIViewController {
     
-    var viewSource: TemplateTableViewSource!
+    let viewSource: HomeTableViewModel = HomeTableViewModel([])
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -18,8 +18,7 @@ class VIPViewController: UIViewController {
         view.backgroundColor = UIColor.white
         self.navigationItem.title = "VIP"
         
-        viewSource = TemplateTableViewSource(frame: view.bounds)
-        
+        viewSource.tableView.frame = view.bounds
         view.addSubview(viewSource.tableView)
         
         self.fetch(["type" : "5", "version" : "5.0", "vclassId" : 68])
@@ -36,7 +35,8 @@ class VIPViewController: UIViewController {
             guard let datas = templateResponse.data else {
                 return
             }
-            self.viewSource.dataArray = datas
+            self.viewSource.datas = [datas]
+            self.viewSource.tableView.reloadData()
         }
     }
 
