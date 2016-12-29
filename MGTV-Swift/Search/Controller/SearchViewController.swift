@@ -25,11 +25,7 @@ class SearchViewController: UIViewController {
 
     let homeViewSource = SearchHomeViewSource()
     
-    lazy var suggestViewSource: SearchSuggestViewSource = {
-        let viewSource = SearchSuggestViewSource()
-        viewSource.delegate = self
-        return viewSource
-    }()
+    lazy var suggestViewSource: SearchSuggestViewSource = SearchSuggestViewSource()
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -48,7 +44,7 @@ class SearchViewController: UIViewController {
                 return
             }
             if let strongSelf = self {
-                strongSelf.homeViewSource.recommendData = datas
+                strongSelf.homeViewSource.recommendDatas = datas
             }
         })
     }
@@ -61,7 +57,7 @@ class SearchViewController: UIViewController {
         
         let _ = searchBar.becomeFirstResponder()
         
-        homeViewSource.delegate = self
+        homeViewSource.searchViewModel.delegate = self
         view.addSubview(homeViewSource.collectionView)
         
         view.addSubview(suggestViewSource.tableView)
@@ -128,7 +124,7 @@ extension SearchViewController: CustomSearchBarDelegate {
                     return
                 }
                 if let strongSelf = self {
-                    strongSelf.suggestViewSource.datas = datas
+                    strongSelf.suggestViewSource.suggestDatas = datas
                 }
             })
         }

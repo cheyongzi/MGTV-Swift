@@ -26,7 +26,13 @@ class TableViewModel<T>: NSObject, ViewModelProtocol, TableViewProtocol {
         return 0
     }
     
-    var cellHeight: CGFloat = -1
+    func selectItem(_ indexPath: IndexPath) {
+        
+    }
+    
+    var cellHeight: CGFloat {
+        return -1
+    }
     
     init(_ tableDatas: [[T]]) {
         datas = tableDatas
@@ -39,6 +45,10 @@ class TableViewModel<T>: NSObject, ViewModelProtocol, TableViewProtocol {
             return caculateHeight(indexPath)
         }
         return cellHeight
+    }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        selectItem(indexPath)
     }
     
     //MARK: - UITableViewDataSource

@@ -60,7 +60,7 @@ class HomeCollectionViewModel: CollectionViewModel<ChannelResponseData>, Channel
         guard let channelId = datas[indexPath.section][indexPath.row].vclassId else  {
             return cell
         }
-        collectionCell.homeTableViewModel.tableView.setContentOffset(CGPoint(x: 0, y: TemplateDataManager.dataManager.offset(channelId)), animated: false)
+        collectionCell.setOffset(channelId)
         let templateResponse = TemplateDataManager.dataManager.template(channelId: channelId)
         TemplateDataManager.dataManager.currentChannelId = channelId
         collectionCell.configCell(response: templateResponse)
@@ -72,7 +72,7 @@ class HomeCollectionViewModel: CollectionViewModel<ChannelResponseData>, Channel
         let index = Int(scrollView.contentOffset.x / scrollView.frame.width)
         let cell = collectionView.cellForItem(at: IndexPath(item: index, section: 0))
         if let homeCell = cell as? TemplateCollectionViewCell {
-            TemplateDataManager.dataManager.storeOffset(homeCell.homeTableViewModel.tableView.contentOffset.y, channelId: TemplateDataManager.dataManager.currentChannelId)
+            homeCell.storeOffset()
         }
         
     }
@@ -112,7 +112,7 @@ class HomeCollectionViewModel: CollectionViewModel<ChannelResponseData>, Channel
     func select(_ fromIndex: Int, toIndex: Int) {
         let cell = collectionView.cellForItem(at: IndexPath(item: fromIndex, section: 0))
         if let homeCell = cell as? TemplateCollectionViewCell {
-            TemplateDataManager.dataManager.storeOffset(homeCell.homeTableViewModel.tableView.contentOffset.y, channelId: TemplateDataManager.dataManager.currentChannelId)
+            homeCell.storeOffset()
         }
         collectionView.scrollToItem(at: IndexPath(item: toIndex, section: 0), at: .centeredHorizontally, animated: true)
     }

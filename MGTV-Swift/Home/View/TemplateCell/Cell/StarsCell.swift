@@ -18,7 +18,9 @@ class StarsCollectionViewModel: CollectionViewModel<StarDataInfo> {
         return starCell
     }
     
-    override var itemSize: CGSize { return CGSize(width: HNTVDeviceWidth/4, height: 123)}
+    override func itemSize(_ indexPath: IndexPath) -> CGSize {
+        return CGSize(width: HNTVDeviceWidth/4, height: 123)
+    }
 }
 
 class StarsCell: TemplateBaseTableViewCell {

@@ -13,94 +13,58 @@ protocol SearchViewSourceDelegate: class {
     func startSearch(_ text: String)
 }
 
-class SearchHomeViewSource:NSObject, UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
-    
-    //MARK: - property
+class SearchCollectionViewSource: CollectionViewModel<Any> {
     weak var delegate: SearchViewSourceDelegate?
     
-    private var hasHistory: Bool = false {
-        didSet {
-            collectionView.reloadData()
-        }
+    //MARk: - HistroyData
+    private var historyData: [String] {
+        return SearchHistoryManager.historyData()
     }
     
-    var recommendData: [SearchRecommendItem] = [] {
-        didSet {
-            collectionView.reloadData()
+    private var hasHistory: Bool {
+        guard historyData.count > 0 else {
+            return false
         }
+        return true
     }
     
-    private var historyData: [String] = SearchHistoryManager.historyData()
-    
-    lazy var collectionView: UICollectionView = {
-        let flowlayout = UICollectionViewFlowLayout()
-        flowlayout.scrollDirection = .vertical
-        let collectionView = UICollectionView(frame: CGRect(x: 0, y: 0, width: HNTVDeviceWidth, height: HNTVDeviceHeight), collectionViewLayout: flowlayout)
-        collectionView.dataSource = self
-        collectionView.delegate = self
-        collectionView.alwaysBounceVertical = true
-        collectionView.backgroundColor = UIColor.white
-        collectionView.register(UINib.init(nibName: "SearchRecommendCollectionCell", bundle: nil), forCellWithReuseIdentifier: "SearchRecommendCollectionCell")
-        collectionView.register(UINib.init(nibName: "SearchHistoryCollectionCell", bundle: nil), forCellWithReuseIdentifier: "SearchHistoryCollectionCell")
-        collectionView.register(UINib.init(nibName: "SearchTitleReusableView", bundle: nil), forSupplementaryViewOfKind: UICollectionElementKindSectionHeader, withReuseIdentifier: "SearchTitleReusableView")
-        return collectionView
-    }()
-    
-    //MARK: - Init
-    override init() {
-        super.init()
-        if historyData.count > 0 {
-            hasHistory = true
-        }
-    }
-    
-    //MARK: - data for index path
-    private func cellData(_ indexPath: IndexPath) -> Any {
+    //MARK: - CollectionViewModel
+    override func itemSize(_ indexPath: IndexPath) -> CGSize {
         if indexPath.section == 0 {
             if hasHistory {
-                return historyData[indexPath.row]
+                return CGSize(width: HNTVDeviceWidth/2 - 15, height: 40)
             }
         }
-        return recommendData[indexPath.row]
+        return CGSize(width: HNTVDeviceWidth/2 - 15, height: 50)
     }
     
-    //MARK: - reload collectionview
-    func reload() {
-        historyData = SearchHistoryManager.historyData()
-        if historyData.count > 0 {
-            hasHistory = true
-        }
+    override func insetForSection(_ section: Int) -> UIEdgeInsets {
+        return UIEdgeInsets(top: 0, left: 10, bottom: 20, right: 10)
     }
     
-    //MARK: - UICollectionView DataSource
-    func numberOfSections(in collectionView: UICollectionView) -> Int {
-        return hasHistory ? 2 : 1
+    override func minimumLineSpacing(_ section: Int) -> CGFloat {
+        return 10
     }
     
-    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        if section == 0 {
-            if hasHistory {
-                return historyData.count
-            }
-        }
-        return recommendData.count
+    override func minimumInteritemSpacing(_ section: Int) -> CGFloat {
+        return 10
     }
     
-    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        var cell = collectionView.dequeueReusableCell(withReuseIdentifier: "SearchRecommendCollectionCell", for: indexPath)
+    override func cellConfig(_ view: UICollectionView, datas: [[Any]], indexPath: IndexPath) -> UICollectionViewCell {
+        var cell = view.dequeueReusableCell(withReuseIdentifier: "SearchRecommendCollectionCell", for: indexPath)
         if indexPath.section == 0 {
             if hasHistory {
-                cell = collectionView.dequeueReusableCell(withReuseIdentifier: "SearchHistoryCollectionCell", for: indexPath)
+                cell = view.dequeueReusableCell(withReuseIdentifier: "SearchHistoryCollectionCell", for: indexPath)
             }
         }
         if let configCell = cell as? SearchConfigCellProtocol {
-            configCell.configCell(data: cellData(indexPath))
+            configCell.configCell(data: datas[indexPath.section][indexPath.row])
         }
         return cell
     }
     
-    func collectionView(_ collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, at indexPath: IndexPath) -> UICollectionReusableView {
-        let reusableView = collectionView.dequeueReusableSupplementaryView(ofKind: UICollectionElementKindSectionHeader, withReuseIdentifier: "SearchTitleReusableView", for: indexPath)
+    override func reusableView(_ view: UICollectionView, indexPath: IndexPath, kind: String) -> UICollectionReusableView {
+        let reusableView = view.dequeueReusableSupplementaryView(ofKind: UICollectionElementKindSectionHeader, withReuseIdentifier: "SearchTitleReusableView", for: indexPath)
         guard let titleReusableView = reusableView as? SearchTitleReusableView else {
             return reusableView
         }
@@ -112,46 +76,19 @@ class SearchHomeViewSource:NSObject, UICollectionViewDelegate, UICollectionViewD
         return titleReusableView
     }
     
-    //MARK: - UICollectionView Delegate
-    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        let data = cellData(indexPath)
-        var searchText: String = ""
-        if let text = data as? String {
-            searchText = text
-        }
-        if let item = data as? SearchRecommendItem, let name = item.name {
-            searchText = name
-        }
-        delegate?.startSearch(searchText)
-    }
-    
-    //MARK: - UIScrollView Delegate
-    func scrollViewWillBeginDragging(_ scrollView: UIScrollView) {
-        delegate?.endEdit()
-    }
-    
-    //MARK: - UICollection Delegate Flowlayout
-    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        if indexPath.section == 0 {
-            if hasHistory {
-                return CGSize(width: HNTVDeviceWidth/2 - 15, height: 40)
+    override func selectItem(_ indexPath: IndexPath) {
+        let data = datas[indexPath.section][indexPath.row]
+        if let history = data as? String {
+            delegate?.startSearch(history)
+        } else if let recommendItem = data as? SearchRecommendItem {
+            guard let name = recommendItem.name else {
+                return
             }
+            delegate?.startSearch(name)
         }
-        return CGSize(width: HNTVDeviceWidth/2 - 15, height: 50)
     }
     
-    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
-        return UIEdgeInsets(top: 0, left: 10, bottom: 20, right: 10)
-    }
-    
-    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {
-        return 10
-    }
-    
-    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumInteritemSpacingForSectionAt section: Int) -> CGFloat {
-        return 10
-    }
-    
+    //MARK: - UICollectionReusableView
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, referenceSizeForHeaderInSection section: Int) -> CGSize {
         if section == 0 {
             if hasHistory {
@@ -159,5 +96,45 @@ class SearchHomeViewSource:NSObject, UICollectionViewDelegate, UICollectionViewD
             }
         }
         return CGSize(width: HNTVDeviceWidth, height: 33)
+    }
+    
+    //MARK: - UIScrollViewDelegate
+    func scrollViewWillBeginDragging(_ scrollView: UIScrollView) {
+        delegate?.endEdit()
+    }
+    
+    //MARK: - Datas init
+    var recommendDatas: [SearchRecommendItem] = [] {
+        didSet {
+            datas = [historyData,recommendDatas]
+        }
+    }
+}
+
+
+class SearchHomeViewSource:NSObject {
+    
+    var searchViewModel = SearchCollectionViewSource([])
+    
+    lazy var collectionView: UICollectionView = {
+        let flowlayout = UICollectionViewFlowLayout()
+        flowlayout.scrollDirection = .vertical
+        flowlayout.headerReferenceSize = CGSize(width: HNTVDeviceWidth, height: 44)
+        let collectionView = UICollectionView(frame: CGRect(x: 0, y: 0, width: HNTVDeviceWidth, height: HNTVDeviceHeight), collectionViewLayout: flowlayout)
+        collectionView.dataSource = self.searchViewModel
+        collectionView.delegate = self.searchViewModel
+        collectionView.alwaysBounceVertical = true
+        collectionView.backgroundColor = UIColor.white
+        collectionView.register(UINib.init(nibName: "SearchRecommendCollectionCell", bundle: nil), forCellWithReuseIdentifier: "SearchRecommendCollectionCell")
+        collectionView.register(UINib.init(nibName: "SearchHistoryCollectionCell", bundle: nil), forCellWithReuseIdentifier: "SearchHistoryCollectionCell")
+        collectionView.register(UINib.init(nibName: "SearchTitleReusableView", bundle: nil), forSupplementaryViewOfKind: UICollectionElementKindSectionHeader, withReuseIdentifier: "SearchTitleReusableView")
+        return collectionView
+    }()
+    
+    var recommendDatas: [SearchRecommendItem] = [] {
+        didSet {
+            searchViewModel.recommendDatas = recommendDatas
+            collectionView.reloadData()
+        }
     }
 }

@@ -17,7 +17,10 @@ class FourCircleCollectionViewModel: CollectionViewModel<TemplateResponseItem> {
         circleCell.templateItem = datas[0][indexPath.row]
         return circleCell
     }
-    override var itemSize: CGSize { return CGSize(width: HNTVDeviceWidth/4, height: 0)}
+    
+    override func itemSize(_ indexPath: IndexPath) -> CGSize {
+        return CGSize(width: HNTVDeviceWidth/4, height: 0)
+    }
 }
 
 class FourCircleCell: TemplateBaseTableViewCell {

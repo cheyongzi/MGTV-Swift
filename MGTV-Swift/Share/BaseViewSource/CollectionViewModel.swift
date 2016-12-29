@@ -21,7 +21,7 @@ protocol ViewModelProtocol {
     func cellConfig(_ view: ViewType, datas: [[DataType]], indexPath: IndexPath) -> CellType
 }
 
-class CollectionViewModel<T>: NSObject, ViewModelProtocol, CollectionViewProtocol {
+class CollectionViewModel<T>: NSObject, ViewModelProtocol,CollectionViewProtocol {
 
     typealias DataType = T
     typealias ViewType = UICollectionView
@@ -33,10 +33,29 @@ class CollectionViewModel<T>: NSObject, ViewModelProtocol, CollectionViewProtoco
         return UICollectionViewCell()
     }
     
-    var minimumLineSpacing: CGFloat { return 0 }
-    var minimumInteritemSpacing: CGFloat { return 0 }
-    var insetForSection: UIEdgeInsets { return UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 0) }
-    var itemSize: CGSize { return CGSize(width: 0, height: 0) }
+    func reusableView(_ view: UICollectionView, indexPath: IndexPath, kind: String) -> UICollectionReusableView {
+        return UICollectionReusableView()
+    }
+    
+    func selectItem(_ indexPath: IndexPath) {
+        
+    }
+    
+    func itemSize(_ indexPath: IndexPath) -> CGSize {
+        return CGSize(width: 0, height: 0)
+    }
+    
+    func insetForSection(_ section: Int) -> UIEdgeInsets {
+        return UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 0)
+    }
+    
+    func minimumLineSpacing(_ section: Int) -> CGFloat {
+        return 0
+    }
+    
+    func minimumInteritemSpacing(_ section: Int) -> CGFloat {
+        return 0
+    }
     
     init(_ collectionDatas: [[T]]) {
         datas = collectionDatas
@@ -55,23 +74,33 @@ class CollectionViewModel<T>: NSObject, ViewModelProtocol, CollectionViewProtoco
         return cellConfig(collectionView, datas: datas, indexPath: indexPath)
     }
     
+    //MARK: - UICollectionViewDelegate
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        selectItem(indexPath)
+    }
+    
     //MARK: UICollectionView DelegateFlowlayout
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         //默认是page类型
-        let itemSizeWith = itemSize.width == 0 ? collectionView.bounds.size.width : itemSize.width
-        let itemSizeHeight = itemSize.height == 0 ? collectionView.bounds.size.height : itemSize.height
+        let size = itemSize(indexPath);
+        let itemSizeWith = size.width == 0 ? collectionView.bounds.size.width : size.width
+        let itemSizeHeight = size.height == 0 ? collectionView.bounds.size.height : size.height
         return CGSize(width: itemSizeWith, height: itemSizeHeight)
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
-        return insetForSection
+        return insetForSection(section)
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {
-        return minimumLineSpacing
+        return minimumLineSpacing(section)
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumInteritemSpacingForSectionAt section: Int) -> CGFloat {
-        return minimumInteritemSpacing
+        return minimumInteritemSpacing(section)
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, at indexPath: IndexPath) -> UICollectionReusableView {
+        return reusableView(collectionView, indexPath: indexPath, kind: kind)
     }
 }

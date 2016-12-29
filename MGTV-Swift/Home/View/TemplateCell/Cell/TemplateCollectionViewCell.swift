@@ -35,4 +35,12 @@ class TemplateCollectionViewCell: UICollectionViewCell {
         homeTableViewModel.datas = [datas]
         homeTableViewModel.tableView.reloadData()
     }
+    
+    func storeOffset() {
+        TemplateDataManager.dataManager.storeOffset(homeTableViewModel.tableView.contentOffset.y, channelId: TemplateDataManager.dataManager.currentChannelId)
+    }
+    
+    func setOffset(_ channelId: String) {
+        homeTableViewModel.tableView.setContentOffset(CGPoint(x: 0, y: TemplateDataManager.dataManager.offset(channelId)), animated: false)
+    }
 }
