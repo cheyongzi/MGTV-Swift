@@ -9,11 +9,27 @@
 import UIKit
 
 class LiveViewController: UIViewController {
+    
+    let liveModel: LiveTableViewModel = LiveTableViewModel([])
 
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = UIColor.white
         self.navigationItem.title = "直播"
+        
+        view.addSubview(liveModel.tableView)
+        
+        LiveDataSource.fetchLive(params: nil) { [unowned self] (responseData, error) in
+            guard let templateResponse = responseData as? TemplateResponse else {
+                return
+            }
+            
+            guard let datas = templateResponse.data else {
+                return
+            }
+            
+            self.liveModel.datas = [datas]
+        }
         // Do any additional setup after loading the view.
     }
 
@@ -22,15 +38,5 @@ class LiveViewController: UIViewController {
         // Dispose of any resources that can be recreated.
     }
     
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
-    }
-    */
 
 }
