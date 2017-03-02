@@ -1,8 +1,11 @@
-<?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="11201" systemVersion="15G1004" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="11762" systemVersion="16D32" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11161"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11757"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
@@ -12,26 +15,32 @@
             <rect key="frame" x="0.0" y="0.0" width="320" height="157"/>
             <autoresizingMask key="autoresizingMask"/>
             <tableViewCellContentView key="contentView" contentMode="center" tableViewCell="fhJ-Dj-Uet" id="CPM-eU-FNo">
-                <frame key="frameInset" width="320" height="157"/>
+                <rect key="frame" x="0.0" y="0.0" width="320" height="156"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
-                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="EdI-mP-MII" customClass="BaseView169" customModule="MGTV_Swift" customModuleProvider="target">
-                        <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                    </view>
-                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="u3W-S3-QXb" customClass="BaseView169" customModule="MGTV_Swift" customModuleProvider="target">
-                        <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                    </view>
+                    <stackView opaque="NO" contentMode="scaleToFill" spacing="3" translatesAutoresizingMaskIntoConstraints="NO" id="0Fd-ea-2mc">
+                        <rect key="frame" x="3" y="5" width="314" height="145"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="EdI-mP-MII" customClass="BaseView169" customModule="MGTV_Swift" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="0.0" width="155.5" height="145"/>
+                                <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            </view>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="u3W-S3-QXb" customClass="BaseView169" customModule="MGTV_Swift" customModuleProvider="target">
+                                <rect key="frame" x="158.5" y="0.0" width="155.5" height="145"/>
+                                <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            </view>
+                        </subviews>
+                        <constraints>
+                            <constraint firstItem="u3W-S3-QXb" firstAttribute="width" secondItem="EdI-mP-MII" secondAttribute="width" id="Jkn-LG-0rI"/>
+                        </constraints>
+                    </stackView>
                 </subviews>
                 <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                 <constraints>
-                    <constraint firstItem="u3W-S3-QXb" firstAttribute="width" secondItem="EdI-mP-MII" secondAttribute="width" id="Rph-15-UU1"/>
-                    <constraint firstAttribute="bottom" secondItem="EdI-mP-MII" secondAttribute="bottom" constant="7" id="VK4-53-mcg"/>
-                    <constraint firstItem="EdI-mP-MII" firstAttribute="top" secondItem="CPM-eU-FNo" secondAttribute="top" constant="5" id="hag-b4-Oqe"/>
-                    <constraint firstItem="EdI-mP-MII" firstAttribute="leading" secondItem="CPM-eU-FNo" secondAttribute="leading" constant="3" id="i78-xs-5mo"/>
-                    <constraint firstAttribute="trailing" secondItem="u3W-S3-QXb" secondAttribute="trailing" constant="3" id="qZP-qT-Zvz"/>
-                    <constraint firstItem="u3W-S3-QXb" firstAttribute="top" secondItem="CPM-eU-FNo" secondAttribute="top" constant="5" id="sxt-a1-vNa"/>
-                    <constraint firstAttribute="bottom" secondItem="u3W-S3-QXb" secondAttribute="bottom" constant="7" id="xQn-0I-mPZ"/>
-                    <constraint firstItem="u3W-S3-QXb" firstAttribute="leading" secondItem="EdI-mP-MII" secondAttribute="trailing" constant="3" id="zVE-Ge-MQF"/>
+                    <constraint firstItem="0Fd-ea-2mc" firstAttribute="leading" secondItem="CPM-eU-FNo" secondAttribute="leading" constant="3" id="3Is-cA-vhV"/>
+                    <constraint firstItem="0Fd-ea-2mc" firstAttribute="top" secondItem="CPM-eU-FNo" secondAttribute="top" constant="5" id="Rx0-Fq-nPz"/>
+                    <constraint firstAttribute="bottom" secondItem="0Fd-ea-2mc" secondAttribute="bottom" constant="7" id="oaT-v8-P5t"/>
+                    <constraint firstAttribute="trailing" secondItem="0Fd-ea-2mc" secondAttribute="trailing" constant="3" id="the-uA-EP4"/>
                 </constraints>
             </tableViewCellContentView>
             <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
