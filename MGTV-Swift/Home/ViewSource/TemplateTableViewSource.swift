@@ -14,26 +14,26 @@ let bigHeight = (Int)(177.5*HNTVDeviceWidth/320.0)
 
 let TemplateCellIndentiferDic: [String : (String, Int)] =
     [
-        "title" : ("SectionTitleCell",38),
-        "ipmodel" : ("TopicTitleCell", 68),
-        "bcrossm" : ("OneTemplateCell", 53 + bigHeight),
-        "nonbcross" : ("OneTemplateCell", 35 + bigHeight),
-        "scrossm" : ("HorizontalTemplateCell", 53 + horizontalHeight),
-        "noncross" : ("HorizontalTemplateCell", 35 + horizontalHeight),
-        "hypsog" : ("VerticalTemplateCell", 53 + verticalHeight),
-        "nonhypsog" : ("VerticalTemplateCell", 35 + verticalHeight),
-        "banner" : ("BannerCell", 30 + (Int)(150*HNTVDeviceWidth/320.0)),
-        "sugg2" : ("SuggestTemplateCell", 2 * (53 + horizontalHeight)),
-        "sugg3" : ("SuggestTemplateCell", 2 * (35 + horizontalHeight)),
-        "more" : ("MoreLinkCell", 46),
-        "rank2" : ("RankVerticalCell", 35 + verticalHeight),
-        "rank3" : ("RankVerticalCell", 53 + verticalHeight),
+        "title" : ("SectionTitleCell",51),
+        "ipmodel" : ("TopicTitleCell", 71),
+        "bcrossm" : ("OneTemplateCell", 66 + bigHeight),
+        "nonbcross" : ("OneTemplateCell", 48 + bigHeight),
+        "scrossm" : ("HorizontalTemplateCell", 66 + horizontalHeight),
+        "noncross" : ("HorizontalTemplateCell", 48 + horizontalHeight),
+        "hypsog" : ("VerticalTemplateCell", 66 + verticalHeight),
+        "nonhypsog" : ("VerticalTemplateCell", 48 + verticalHeight),
+        "banner" : ("BannerCell", 33 + (Int)(150*HNTVDeviceWidth/320.0)),
+        "sugg2" : ("SuggestTemplateCell", 2 * (66 + horizontalHeight)),
+        "sugg3" : ("SuggestTemplateCell", 2 * (48 + horizontalHeight)),
+        "more" : ("MoreLinkCell", 53),
+        "rank2" : ("RankVerticalCell", 48 + verticalHeight),
+        "rank3" : ("RankVerticalCell", 66 + verticalHeight),
         //"advert" : ("ADTemplateCell", 108),
-        "king" : ("OneTemplateCell", 53 + bigHeight),
+        "king" : ("OneTemplateCell", 66 + bigHeight),
         //"dfilter" : ("FilterCell", 86),
         //"fast" : ("FastCell", 43),
-        "star" : ("StarsCell", 247),
-        "circle" : ("FourCircleCell", 104),
+        "star" : ("StarsCell", 270),
+        "circle" : ("FourCircleCell", 112),
         "vipac" : ("VIPACCell", 108),
         "basecell" : ("TemplateBaseTableViewCell", 0)
 ]
@@ -62,13 +62,14 @@ class HomeTableViewModel: TableViewModel<TemplateResponseData> {
     
     override func cellConfig(_ view: UITableView, datas: [[TemplateResponseData]], indexPath: IndexPath) -> UITableViewCell {
         let type = moduleType(datas[0][indexPath.row])
-        let cell = tableView.dequeueReusableCell(withIdentifier: identifier(type), for: indexPath)
+        let cell = tableView.dequeueReusableCell(withIdentifier: identifier(type))
         if let baseCell = cell as? TemplateBaseTableViewCell {
             let responseData = datas[0][indexPath.row]
             baseCell.configResponse(responseData: responseData, indexPath: indexPath)
+            baseCell.selectionStyle = .none
         }
         
-        return cell;
+        return cell!;
     }
     
     //MARK: - 根据位置获取对应的cell的样式

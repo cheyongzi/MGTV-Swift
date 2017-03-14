@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="11542" systemVersion="16B2555" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="11762" systemVersion="16D32" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11524"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11757"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
@@ -18,50 +18,50 @@
                 <rect key="frame" x="0.0" y="0.0" width="320" height="312"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
-                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="D3u-GL-p1X" customClass="BaseView169" customModule="MGTV_Swift" customModuleProvider="target">
-                        <rect key="frame" x="3" y="5" width="155.5" height="144"/>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                    </view>
-                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="1ga-1n-srx" customClass="BaseView169" customModule="MGTV_Swift" customModuleProvider="target">
-                        <rect key="frame" x="161.5" y="5" width="155.5" height="144"/>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                    </view>
-                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="UtO-i5-NtH">
-                        <rect key="frame" x="0.0" y="155" width="320" height="2"/>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    <stackView opaque="NO" contentMode="scaleToFill" spacing="3" translatesAutoresizingMaskIntoConstraints="NO" id="QQ9-cL-JUu">
+                        <rect key="frame" x="3" y="5" width="314" height="137"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="D3u-GL-p1X" customClass="BaseView169" customModule="MGTV_Swift" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="0.0" width="155.5" height="137"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            </view>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="1ga-1n-srx" customClass="BaseView169" customModule="MGTV_Swift" customModuleProvider="target">
+                                <rect key="frame" x="158.5" y="0.0" width="155.5" height="137"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            </view>
+                        </subviews>
                         <constraints>
-                            <constraint firstAttribute="height" constant="2" id="Tfu-P6-z61"/>
+                            <constraint firstItem="1ga-1n-srx" firstAttribute="width" secondItem="D3u-GL-p1X" secondAttribute="width" id="HBm-0A-7i9"/>
+                            <constraint firstItem="1ga-1n-srx" firstAttribute="height" secondItem="D3u-GL-p1X" secondAttribute="height" id="dWh-5x-x61"/>
                         </constraints>
-                    </view>
-                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="bwl-W8-M2F" customClass="BaseView169" customModule="MGTV_Swift" customModuleProvider="target">
-                        <rect key="frame" x="3" y="161" width="155.5" height="144"/>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                    </view>
-                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="g8p-iC-hJT" customClass="BaseView169" customModule="MGTV_Swift" customModuleProvider="target">
-                        <rect key="frame" x="161.5" y="161" width="155.5" height="144"/>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                    </view>
+                    </stackView>
+                    <stackView opaque="NO" contentMode="scaleToFill" spacing="3" translatesAutoresizingMaskIntoConstraints="NO" id="4Vh-sK-rr1">
+                        <rect key="frame" x="3" y="159" width="312" height="136.5"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="bwl-W8-M2F" customClass="BaseView169" customModule="MGTV_Swift" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="0.0" width="154.5" height="136.5"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            </view>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="g8p-iC-hJT" customClass="BaseView169" customModule="MGTV_Swift" customModuleProvider="target">
+                                <rect key="frame" x="157.5" y="0.0" width="154.5" height="136.5"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            </view>
+                        </subviews>
+                        <constraints>
+                            <constraint firstItem="g8p-iC-hJT" firstAttribute="height" secondItem="bwl-W8-M2F" secondAttribute="height" id="3JK-57-UpZ"/>
+                            <constraint firstItem="g8p-iC-hJT" firstAttribute="width" secondItem="bwl-W8-M2F" secondAttribute="width" id="HAS-Sv-g6S"/>
+                        </constraints>
+                    </stackView>
                 </subviews>
                 <constraints>
-                    <constraint firstItem="D3u-GL-p1X" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="5" id="2Eu-dl-5Dm"/>
-                    <constraint firstItem="g8p-iC-hJT" firstAttribute="leading" secondItem="bwl-W8-M2F" secondAttribute="trailing" constant="3" id="2dB-mG-AZl"/>
-                    <constraint firstAttribute="trailing" secondItem="g8p-iC-hJT" secondAttribute="trailing" constant="3" id="2rY-Oq-27c"/>
-                    <constraint firstItem="UtO-i5-NtH" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" id="36C-BO-Yhz"/>
-                    <constraint firstAttribute="trailing" secondItem="1ga-1n-srx" secondAttribute="trailing" constant="3" id="62V-w9-Smv"/>
-                    <constraint firstItem="UtO-i5-NtH" firstAttribute="top" secondItem="D3u-GL-p1X" secondAttribute="bottom" constant="6" id="AMW-ce-BDj"/>
-                    <constraint firstItem="1ga-1n-srx" firstAttribute="leading" secondItem="D3u-GL-p1X" secondAttribute="trailing" constant="3" id="B1g-un-hzM"/>
-                    <constraint firstAttribute="trailing" secondItem="UtO-i5-NtH" secondAttribute="trailing" id="B6k-Wc-gBj"/>
-                    <constraint firstItem="D3u-GL-p1X" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="3" id="BSl-1Z-Zai"/>
-                    <constraint firstItem="1ga-1n-srx" firstAttribute="width" secondItem="D3u-GL-p1X" secondAttribute="width" id="I1b-Fy-K1D"/>
-                    <constraint firstItem="UtO-i5-NtH" firstAttribute="centerY" secondItem="H2p-sc-9uM" secondAttribute="centerY" id="WKk-nz-zsu"/>
-                    <constraint firstItem="g8p-iC-hJT" firstAttribute="centerY" secondItem="bwl-W8-M2F" secondAttribute="centerY" id="WM9-L1-qkq"/>
-                    <constraint firstItem="bwl-W8-M2F" firstAttribute="top" secondItem="UtO-i5-NtH" secondAttribute="bottom" constant="4" id="Z0S-EB-ew2"/>
-                    <constraint firstItem="1ga-1n-srx" firstAttribute="height" secondItem="D3u-GL-p1X" secondAttribute="height" id="cJZ-Wn-dLL"/>
-                    <constraint firstItem="g8p-iC-hJT" firstAttribute="height" secondItem="bwl-W8-M2F" secondAttribute="height" id="dVa-7D-5Qs"/>
-                    <constraint firstAttribute="bottom" secondItem="bwl-W8-M2F" secondAttribute="bottom" constant="7" id="hSF-7S-e43"/>
-                    <constraint firstItem="g8p-iC-hJT" firstAttribute="width" secondItem="bwl-W8-M2F" secondAttribute="width" id="oqH-T3-mnL"/>
-                    <constraint firstItem="1ga-1n-srx" firstAttribute="centerY" secondItem="D3u-GL-p1X" secondAttribute="centerY" id="piw-Vv-XeT"/>
-                    <constraint firstItem="bwl-W8-M2F" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="3" id="vRi-uS-Snu"/>
+                    <constraint firstItem="QQ9-cL-JUu" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="5" id="6l3-Kc-o2F"/>
+                    <constraint firstItem="QQ9-cL-JUu" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="3" id="AEC-qg-wci"/>
+                    <constraint firstAttribute="bottom" secondItem="4Vh-sK-rr1" secondAttribute="bottom" constant="17" id="VwE-dL-ezg"/>
+                    <constraint firstItem="4Vh-sK-rr1" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="3" id="e58-CS-jTt"/>
+                    <constraint firstItem="4Vh-sK-rr1" firstAttribute="top" secondItem="QQ9-cL-JUu" secondAttribute="bottom" constant="17" id="lQo-pP-q5B"/>
+                    <constraint firstItem="4Vh-sK-rr1" firstAttribute="height" secondItem="QQ9-cL-JUu" secondAttribute="height" id="mhR-Og-v6M"/>
+                    <constraint firstAttribute="trailing" secondItem="4Vh-sK-rr1" secondAttribute="trailing" constant="5" id="qYB-vn-AWZ"/>
+                    <constraint firstAttribute="trailing" secondItem="QQ9-cL-JUu" secondAttribute="trailing" constant="3" id="vGE-TT-fgg"/>
                 </constraints>
             </tableViewCellContentView>
             <connections>
@@ -70,7 +70,7 @@
                 <outletCollection property="baseViews" destination="bwl-W8-M2F" collectionClass="NSMutableArray" id="GAj-73-Ylc"/>
                 <outletCollection property="baseViews" destination="g8p-iC-hJT" collectionClass="NSMutableArray" id="5Xr-AV-eze"/>
             </connections>
-            <point key="canvasLocation" x="-286" y="5"/>
+            <point key="canvasLocation" x="53" y="-64"/>
         </tableViewCell>
     </objects>
 </document>

@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="11542" systemVersion="16B2555" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="11762" systemVersion="16D32" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11524"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11757"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
@@ -18,32 +18,35 @@
                 <rect key="frame" x="0.0" y="0.0" width="320" height="225"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
-                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="nEd-aP-aQY" customClass="BaseView57" customModule="MGTV_Swift" customModuleProvider="target">
-                        <rect key="frame" x="3" y="5" width="102.5" height="213"/>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                    </view>
-                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="1ga-t8-5Hs" customClass="BaseView57" customModule="MGTV_Swift" customModuleProvider="target">
-                        <rect key="frame" x="108.5" y="5" width="103" height="213"/>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                    </view>
-                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="m8G-VA-hHz" customClass="BaseView57" customModule="MGTV_Swift" customModuleProvider="target">
-                        <rect key="frame" x="214.5" y="5" width="102.5" height="213"/>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                    </view>
+                    <stackView opaque="NO" contentMode="scaleToFill" spacing="3" translatesAutoresizingMaskIntoConstraints="NO" id="91W-gF-wLU">
+                        <rect key="frame" x="3" y="5" width="314" height="204"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="nEd-aP-aQY" customClass="BaseView57" customModule="MGTV_Swift" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="0.0" width="102.5" height="204"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            </view>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="1ga-t8-5Hs" customClass="BaseView57" customModule="MGTV_Swift" customModuleProvider="target">
+                                <rect key="frame" x="105.5" y="0.0" width="103" height="204"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            </view>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="m8G-VA-hHz" customClass="BaseView57" customModule="MGTV_Swift" customModuleProvider="target">
+                                <rect key="frame" x="211.5" y="0.0" width="102.5" height="204"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            </view>
+                        </subviews>
+                        <constraints>
+                            <constraint firstItem="m8G-VA-hHz" firstAttribute="height" secondItem="1ga-t8-5Hs" secondAttribute="height" id="0AQ-gX-MDC"/>
+                            <constraint firstItem="1ga-t8-5Hs" firstAttribute="width" secondItem="nEd-aP-aQY" secondAttribute="width" id="DH4-wm-9XA"/>
+                            <constraint firstItem="1ga-t8-5Hs" firstAttribute="height" secondItem="nEd-aP-aQY" secondAttribute="height" id="os3-cv-9df"/>
+                            <constraint firstItem="m8G-VA-hHz" firstAttribute="width" secondItem="1ga-t8-5Hs" secondAttribute="width" id="pdt-S1-Mbc"/>
+                        </constraints>
+                    </stackView>
                 </subviews>
                 <constraints>
-                    <constraint firstItem="nEd-aP-aQY" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="5" id="0eR-ZO-mKe"/>
-                    <constraint firstItem="m8G-VA-hHz" firstAttribute="width" secondItem="1ga-t8-5Hs" secondAttribute="width" id="Ces-vT-oMt"/>
-                    <constraint firstItem="1ga-t8-5Hs" firstAttribute="width" secondItem="nEd-aP-aQY" secondAttribute="width" id="Fhw-Ah-d6j"/>
-                    <constraint firstAttribute="trailing" secondItem="m8G-VA-hHz" secondAttribute="trailing" constant="3" id="IaZ-jk-M4B"/>
-                    <constraint firstAttribute="bottom" secondItem="nEd-aP-aQY" secondAttribute="bottom" constant="7" id="O2q-4x-qU5"/>
-                    <constraint firstItem="m8G-VA-hHz" firstAttribute="height" secondItem="1ga-t8-5Hs" secondAttribute="height" id="SDk-88-mYp"/>
-                    <constraint firstItem="m8G-VA-hHz" firstAttribute="centerY" secondItem="1ga-t8-5Hs" secondAttribute="centerY" id="VwW-Rc-ZTw"/>
-                    <constraint firstItem="1ga-t8-5Hs" firstAttribute="centerY" secondItem="nEd-aP-aQY" secondAttribute="centerY" id="X7n-E3-r08"/>
-                    <constraint firstItem="1ga-t8-5Hs" firstAttribute="height" secondItem="nEd-aP-aQY" secondAttribute="height" id="hAQ-jK-8Ff"/>
-                    <constraint firstItem="1ga-t8-5Hs" firstAttribute="leading" secondItem="nEd-aP-aQY" secondAttribute="trailing" constant="3" id="lHD-ud-CIZ"/>
-                    <constraint firstItem="m8G-VA-hHz" firstAttribute="leading" secondItem="1ga-t8-5Hs" secondAttribute="trailing" constant="3" id="sVp-yT-1hN"/>
-                    <constraint firstItem="nEd-aP-aQY" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="3" id="tVI-ih-wTu"/>
+                    <constraint firstItem="91W-gF-wLU" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="3" id="Cq1-tG-0G5"/>
+                    <constraint firstAttribute="bottom" secondItem="91W-gF-wLU" secondAttribute="bottom" constant="17" id="Vnu-kG-8TO"/>
+                    <constraint firstAttribute="trailing" secondItem="91W-gF-wLU" secondAttribute="trailing" constant="3" id="WzO-Pn-T2J"/>
+                    <constraint firstItem="91W-gF-wLU" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="5" id="jmP-or-bhG"/>
                 </constraints>
             </tableViewCellContentView>
             <connections>

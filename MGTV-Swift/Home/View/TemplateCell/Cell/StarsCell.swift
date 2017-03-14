@@ -19,7 +19,7 @@ class StarsCollectionViewModel: CollectionViewModel<StarDataInfo> {
     }
     
     override func itemSize(_ indexPath: IndexPath) -> CGSize {
-        return CGSize(width: HNTVDeviceWidth/4, height: 123)
+        return CGSize(width: HNTVDeviceWidth/4, height: 135)
     }
 }
 

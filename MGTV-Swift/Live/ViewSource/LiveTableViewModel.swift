@@ -13,10 +13,10 @@ let LiveCellIndentiferDic: [String : (String, Int)] =
         "channellive" : ("ChannelLiveCell", 80),
         "artist" : ("ArtistLiveCell", 60),
         "personallive" : ("PersonalLiveCell", 278),
-        "title" : ("SectionTitleCell",40),
-        "bcrossm" : ("OneTemplateCell", 53 + bigHeight),
-        "scrossm" : ("HorizontalTemplateCell", 53 + horizontalHeight),
-        "more" : ("MoreLinkCell", 46),
+        "title" : ("SectionTitleCell",51),
+        "bcrossm" : ("OneTemplateCell", 68 + bigHeight),
+        "scrossm" : ("HorizontalTemplateCell", 68 + horizontalHeight),
+        "more" : ("MoreLinkCell", 53),
         "basecell" : ("TemplateBaseTableViewCell", 0)
 ]
 

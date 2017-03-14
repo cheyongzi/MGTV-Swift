@@ -14,23 +14,8 @@ class BaseView169: BaseView {
     //MARK: - config cell method
     override func config(templateItem item: TemplateResponseItem?, isDesc: Bool, picSize: String) {
         super.config(templateItem: item, isDesc: isDesc, picSize: picSize)
-        var orignImgStr: String?
-        if !isEmpty(data: item?.phoneImgUrl) {
-            orignImgStr = item?.phoneImgUrl
-        } else {
-            orignImgStr = item?.imgHUrl
-        }
-        if let path = orignImgStr {
-            let pathEx = path.pathExtension()
-            let imgStr = path.appending("_\(picSize).\(pathEx)")
-            imageView.kf.setImage(with: URL(string: imgStr))
-        } else {
-            imageView.kf.setImage(with: URL(string: ""))
-        }
-    }
-    
-    override func config(recommondItem item: RecommonResponseData?, isDesc: Bool, picSize: String) {
-        super.config(recommondItem: item, isDesc: isDesc, picSize: picSize)
+        
+        baseImageView.configTemplate(item: item, picSize: picSize)
     }
 
 }

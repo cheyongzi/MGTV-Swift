@@ -34,7 +34,7 @@ class HomeCollectionViewModel: CollectionViewModel<ChannelResponseData>, Channel
         collectionView.clipsToBounds = false;
         collectionView.delegate = self;
         collectionView.dataSource = self;
-        collectionView.backgroundColor = UIColor.red
+        collectionView.backgroundColor = UIColor.white
         collectionView.register(TemplateCollectionViewCell.self, forCellWithReuseIdentifier: "TemplateCollectionViewCell")
         return collectionView;
         }()

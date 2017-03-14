@@ -12,6 +12,9 @@ class StarCollectionViewCell: UICollectionViewCell {
 
     @IBOutlet weak var titleLabel: UILabel!
     @IBOutlet weak var iconImageView: UIImageView!
+    @IBOutlet weak var liveStatusImage: UIImageView!
+    @IBOutlet weak var onLineNumBackImg: UIImageView!
+    @IBOutlet weak var onLineNumLabel: UILabel!
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
@@ -31,6 +34,16 @@ class StarCollectionViewCell: UICollectionViewCell {
             }
             
             titleLabel.text = info.nickName
+            
+            if info.online == "offline" {
+                liveStatusImage.isHidden = true
+                onLineNumBackImg.image = UIImage(named: "Star_Follow_Quantity")
+                onLineNumLabel.text = info.hotValue
+            } else {
+                liveStatusImage.isHidden = false
+                onLineNumBackImg.image = UIImage(named: "Star_Live_Quantity")
+                onLineNumLabel.text = info.onlineCount
+            }
         }
     }
 

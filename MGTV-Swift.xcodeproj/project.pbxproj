@@ -27,6 +27,8 @@
 		4558848B1E00F07700FCC0E7 /* SearchSuggest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4558848A1E00F07700FCC0E7 /* SearchSuggest.swift */; };
 		4558848E1E00F24500FCC0E7 /* SearchSuggestCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4558848C1E00F24500FCC0E7 /* SearchSuggestCell.swift */; };
 		455884911E00F4AC00FCC0E7 /* SearchSuggestCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 455884901E00F4AC00FCC0E7 /* SearchSuggestCell.xib */; };
+		4559ACEB1E778D10006C8B90 /* BaseImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4559ACEA1E778D10006C8B90 /* BaseImageView.swift */; };
+		4559ACEF1E77901F006C8B90 /* BaseImageView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4559ACEE1E77901F006C8B90 /* BaseImageView.xib */; };
 		455FFBE61DB5D39900D58F2B /* ChannelSegmentCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 455FFBE41DB5D39900D58F2B /* ChannelSegmentCell.swift */; };
 		455FFBEA1DB5FD0400D58F2B /* ChannelSegmentCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 455FFBE91DB5FD0400D58F2B /* ChannelSegmentCell.xib */; };
 		455FFBEC1DB889A800D58F2B /* BannerCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 455FFBEB1DB889A800D58F2B /* BannerCell.swift */; };
@@ -173,6 +175,8 @@
 		4558848A1E00F07700FCC0E7 /* SearchSuggest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SearchSuggest.swift; sourceTree = "<group>"; };
 		4558848C1E00F24500FCC0E7 /* SearchSuggestCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SearchSuggestCell.swift; sourceTree = "<group>"; };
 		455884901E00F4AC00FCC0E7 /* SearchSuggestCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SearchSuggestCell.xib; sourceTree = "<group>"; };
+		4559ACEA1E778D10006C8B90 /* BaseImageView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BaseImageView.swift; sourceTree = "<group>"; };
+		4559ACEE1E77901F006C8B90 /* BaseImageView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = BaseImageView.xib; sourceTree = "<group>"; };
 		455FFBE41DB5D39900D58F2B /* ChannelSegmentCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChannelSegmentCell.swift; sourceTree = "<group>"; };
 		455FFBE91DB5FD0400D58F2B /* ChannelSegmentCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ChannelSegmentCell.xib; sourceTree = "<group>"; };
 		455FFBEB1DB889A800D58F2B /* BannerCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BannerCell.swift; sourceTree = "<group>"; };
@@ -430,6 +434,7 @@
 			children = (
 				45A8CFAA1DAF31D4005902D2 /* BaseView57.swift */,
 				45A8CFAC1DAF31E6005902D2 /* BaseView169.swift */,
+				4559ACEA1E778D10006C8B90 /* BaseImageView.swift */,
 			);
 			path = BaseView;
 			sourceTree = "<group>";
@@ -439,6 +444,7 @@
 			children = (
 				45A8CFA61DAF31B4005902D2 /* BaseView57.xib */,
 				45A8CFA81DAF31C1005902D2 /* BaseView169.xib */,
+				4559ACEE1E77901F006C8B90 /* BaseImageView.xib */,
 			);
 			path = Share;
 			sourceTree = "<group>";
@@ -1044,6 +1050,7 @@
 				45E55E751DC1A545007886F6 /* CustomBannerAutoCell.xib in Resources */,
 				45BFFE6E1DB8B66A00D89A26 /* FastCell.xib in Resources */,
 				4599A18B1E2CBF11009520F8 /* ChannelLiveCell.xib in Resources */,
+				4559ACEF1E77901F006C8B90 /* BaseImageView.xib in Resources */,
 				45A8CFA91DAF31C1005902D2 /* BaseView169.xib in Resources */,
 				455FFBEA1DB5FD0400D58F2B /* ChannelSegmentCell.xib in Resources */,
 				4558847A1DFF963D00FCC0E7 /* SearchHistoryCollectionCell.xib in Resources */,
@@ -1279,6 +1286,7 @@
 				45B0C6E01DAB8411003D2DD6 /* LiveViewController.swift in Sources */,
 				45A8CFAB1DAF31D4005902D2 /* BaseView57.swift in Sources */,
 				45A8CFE61DB0D48E005902D2 /* BaseDataSource.swift in Sources */,
+				4559ACEB1E778D10006C8B90 /* BaseImageView.swift in Sources */,
 				4558847C1DFF96DC00FCC0E7 /* SearchHistoryManager.swift in Sources */,
 				45A8CFB51DAF3E69005902D2 /* FilterCell.swift in Sources */,
 				450042751DAB92DA001070DE /* TemplateDataSource.swift in Sources */,

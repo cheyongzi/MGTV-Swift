@@ -19,18 +19,18 @@
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <stackView opaque="NO" contentMode="scaleToFill" spacing="3" translatesAutoresizingMaskIntoConstraints="NO" id="v88-Lm-Z6p">
-                        <rect key="frame" x="3" y="5" width="314" height="214"/>
+                        <rect key="frame" x="3" y="5" width="314" height="203.5"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Gqs-dQ-nfb" customClass="BaseView57" customModule="MGTV_Swift" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="0.0" width="102.5" height="214"/>
+                                <rect key="frame" x="0.0" y="0.0" width="102.5" height="203.5"/>
                                 <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="cIg-1C-8VF" customClass="BaseView57" customModule="MGTV_Swift" customModuleProvider="target">
-                                <rect key="frame" x="105.5" y="0.0" width="103" height="214"/>
+                                <rect key="frame" x="105.5" y="0.0" width="103" height="203.5"/>
                                 <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="yN9-kH-S8X" customClass="BaseView57" customModule="MGTV_Swift" customModuleProvider="target">
-                                <rect key="frame" x="211.5" y="0.0" width="102.5" height="214"/>
+                                <rect key="frame" x="211.5" y="0.0" width="102.5" height="203.5"/>
                                 <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             </view>
                         </subviews>
@@ -43,7 +43,7 @@
                 <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                 <constraints>
                     <constraint firstItem="v88-Lm-Z6p" firstAttribute="leading" secondItem="Qk0-hk-Z9C" secondAttribute="leading" constant="3" id="APK-iB-NkI"/>
-                    <constraint firstAttribute="bottom" secondItem="v88-Lm-Z6p" secondAttribute="bottom" constant="7" id="mmD-iT-4fv"/>
+                    <constraint firstAttribute="bottom" secondItem="v88-Lm-Z6p" secondAttribute="bottom" constant="17" id="mmD-iT-4fv"/>
                     <constraint firstItem="v88-Lm-Z6p" firstAttribute="top" secondItem="Qk0-hk-Z9C" secondAttribute="top" constant="5" id="nwI-Xf-AVb"/>
                     <constraint firstAttribute="trailing" secondItem="v88-Lm-Z6p" secondAttribute="trailing" constant="3" id="yOF-Mb-P1F"/>
                 </constraints>
