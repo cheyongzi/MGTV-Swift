@@ -43,7 +43,7 @@ class RankVerticalCell: TemplateBaseTableViewCell {
         }
         
         var isHideDesc = true
-        if templateData.moduleType == "rank3" {
+        if templateData.moduleType == "rank2" {
             isHideDesc = false
         }
         

@@ -10,8 +10,8 @@ import Foundation
 
 struct SearchSuggestDataSource {
     static func fetchSuggest(_ params: [String : Any], complete: @escaping CompleteBlock) {
-        let request = MGTVNetwork.shareInstance.request(path: "v6/search/autocomplete", parameters: params)
-        request.startRequest(SearchSuggestResponse.self){ (response, error) in
+        let requestInfo = MGTVRequestInfo(path: "v6/search/autocomplete", parameters: params)
+        SimpleRequestClient(requestInfo: requestInfo).send(SearchSuggestResponse.self) { (response, error) in
             complete(response, error)
         }
     }
@@ -19,8 +19,8 @@ struct SearchSuggestDataSource {
 
 struct SearchResultDataSource {
     static func fetchSearch(_ params: [String : Any], complete: @escaping CompleteBlock) {
-        let request = MGTVNetwork.shareInstance.request(path: "v6/search/getResult", parameters: params)
-        request.startRequest(SearchResultResponse.self){ (response, error) in
+        let requestInfo = MGTVRequestInfo(path: "v6/search/getResult", parameters: params)
+        SimpleRequestClient(requestInfo: requestInfo).send(SearchResultResponse.self) { (response, error) in
             complete(response, error)
         }
     }

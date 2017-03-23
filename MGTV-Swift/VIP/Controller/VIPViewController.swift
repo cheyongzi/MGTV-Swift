@@ -28,7 +28,7 @@ class VIPViewController: UIViewController {
     
     //MARK: - VIP频道接口的请求
     func fetch(_ params: [String : Any]) {
-        TemplateDataSource.fetchTemplate(params: params){ [unowned self] (response, error) in
+        TemplateDataSource.fetchTemplate(params){ [unowned self] (response, error) in
             guard let templateResponse = response as? TemplateResponse else {
                 return
             }

@@ -13,8 +13,8 @@ struct RecommondDataSource {
         guard let templateData = params["template"] as? TemplateResponseData else {
             return
         }
-        let request = MGTVNetwork.shareInstance.request(path: "mobile/user",parameters: ["channelId" : TemplateDataManager.dataManager.currentChannelId], URLHost: "http://rc.mgtv.com/")
-        request.startRequest(RecommondResponse.self) { (response, error) in
+        let requestInfo = MGTVRequestInfo(path: "mobile/user", host: "http://rc.mgtv.com/", parameters: ["channelId" : TemplateDataManager.dataManager.currentChannelId])
+        SimpleRequestClient(requestInfo: requestInfo).send(RecommondResponse.self) { (response, error) in
             guard !(error != nil), let guessResponse = response else {
                 templateData.redirectStatus = 3
                 complete(nil, error)
@@ -31,15 +31,15 @@ struct RecommondDataSource {
         guard let templateData = params["template"] as? TemplateResponseData else {
             return
         }
-        let request = MGTVNetwork.shareInstance.request(path: "mobile/rank",parameters: ["channelId" : TemplateDataManager.dataManager.currentChannelId], URLHost: "http://rc.mgtv.com/")
-        request.startRequest(RecommondResponse.self) { (response, error) in
-            guard !(error != nil), let rankResponse = response else {
+        let requestInfo = MGTVRequestInfo(path: "mobile/rank", host: "http://rc.mgtv.com/", parameters: ["channelId" : TemplateDataManager.dataManager.currentChannelId])
+        SimpleRequestClient(requestInfo: requestInfo).send(RecommondResponse.self) { (response, error) in
+            guard !(error != nil), let guessResponse = response else {
                 templateData.redirectStatus = 3
                 complete(nil, error)
                 return
             }
             
-            templateData.rankData = rankResponse
+            templateData.rankData = guessResponse
             templateData.redirectStatus = 2
             complete(templateData, nil)
         }

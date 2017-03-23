@@ -10,70 +10,63 @@ import Alamofire
 import AlamofireObjectMapper
 import ObjectMapper
 
-private var key: Void?
-extension DataRequest {
-    func startRequest<T : Mappable>(_ dataType: T.Type?, resultClosure: @escaping (_ resultData: T?, _ error: Error?) -> Void) {
-        if self.enableCache {
-            self.responseJSON(completionHandler: { (response) in
-                guard let request = self.request else {
-                    resultClosure(nil, response.result.error)
-                    return
-                }
-                
-                guard let data = response.data else {
-                    resultClosure(nil, response.result.error)
-                    return
-                }
-                var responsedData: Data?
-                if response.result.error != nil {
-                    let cacheResponse = URLCache.shared.cachedResponse(for: request)
-                    responsedData = cacheResponse?.data
-                } else {
-                    let urlCacheResponse = CachedURLResponse(response: response.response!, data: data, userInfo: nil, storagePolicy: .allowed)
-                    URLCache.shared.storeCachedResponse(urlCacheResponse, for: request)
-                    responsedData = data
-                }
-                
-                if responsedData == nil {
-                    resultClosure(nil, response.result.error)
-                } else {
-                    var json: Any?
-                    do {
-                        json = try JSONSerialization.jsonObject(with: responsedData!, options: .allowFragments)
-                    }catch {
-                        print("json parse error")
-                    }
-                    let resultValue = Mapper<T>().map(JSONObject: json)
-                    resultClosure(resultValue, response.result.error)
-                }
-            })
-        } else {
-            self.responseObject { (response: DataResponse<T>) in
-                resultClosure(response.result.value, response.result.error)
-            }
-        }
-    }
+let DefaultHost = "http://mobile.api.hunantv.com/"
+let MobHost = "http://mob.bz.mgtv.com/"
+let StHost = "http://st.bz.mgtv.com/"
+
+struct MGTVRequestInfo {
+    let host: String
+    let path: String
     
-    var enableCache: Bool {
-        set {
-            objc_setAssociatedObject(self, &key, newValue, .OBJC_ASSOCIATION_RETAIN_NONATOMIC)
-        }
-        get {
-            return objc_getAssociatedObject(self, &key) as! Bool
-        }
+    let httpMethod: HTTPMethod
+    
+    let parameters: Parameters?
+    
+    let encoding: ParameterEncoding
+    
+    let headers: HTTPHeaders?
+    
+    let enableCache: Bool
+    
+    init(path: String, host: String = DefaultHost, httpMethod: HTTPMethod = .get, parameters: Parameters? = nil, encoding: ParameterEncoding = URLEncoding.default, header: HTTPHeaders? = nil, enableCache: Bool = true) {
+        self.host = host
+        self.path = path
+        self.httpMethod = httpMethod
+        self.parameters = parameters
+        self.encoding = encoding
+        self.headers = header
+        self.enableCache = enableCache
     }
 }
 
-class MGTVNetwork {
-    static let shareInstance = MGTVNetwork()
+
+struct SimpleRequestClient: Client, Request {
+    typealias RequestInfo = MGTVRequestInfo
     
-    private init () { }
+    var requestInfo: MGTVRequestInfo
     
-    func request(path: String, method: Alamofire.HTTPMethod = .get, parameters: [String : Any]? = nil, encoding: ParameterEncoding = URLEncoding.default, headers: [String: String]? = nil, enableCache : Bool = false, URLHost : String? = nil) -> Alamofire.DataRequest {
-        let host = URLHost ?? "http://mobile.api.hunantv.com/"
-        let request = Alamofire.request("\(host)\(path)", method: method, parameters: parameters, encoding: encoding, headers: headers);
-        request.enableCache = enableCache
-        return request
+    func send<T : Mappable>(_ dataType: T.Type, result: @escaping (T?, Error?) -> Void) {
+        guard let url = URL(string: requestInfo.path, relativeTo: URL(string: requestInfo.host)) else {
+            return
+        }
+        let request = Alamofire.request(url, method: requestInfo.httpMethod, parameters: requestInfo.parameters, encoding: requestInfo.encoding, headers: requestInfo.headers)
+        guard let urlRequest = request.request else {
+            return;
+        }
+        if let cacheResponse = URLCache.shared.cachedResponse(for: urlRequest) {
+            if let json = try? JSONSerialization.jsonObject(with: cacheResponse.data, options: .allowFragments) {
+                if let cacheMapper = Mapper<T>().map(JSONObject: json) {
+                    result(cacheMapper, nil)
+                }
+            }
+        }
+        request.responseObject(completionHandler: { (response: DataResponse<T>) in
+            if self.requestInfo.enableCache, let data = response.data ,let response = response.response {
+                let urlCacheResponse = CachedURLResponse(response: response, data: data, userInfo: nil, storagePolicy: .allowed)
+                URLCache.shared.storeCachedResponse(urlCacheResponse, for: urlRequest)
+            }
+            result(response.result.value, response.result.error)
+        })
     }
 }
 

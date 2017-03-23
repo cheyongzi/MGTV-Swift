@@ -13,8 +13,8 @@ struct StarDataSource {
         guard let templateData = params["template"] as? TemplateResponseData else {
             return
         }
-        let request = MGTVNetwork.shareInstance.request(path: "artist/getArtistListOrderByRankList", enableCache: true, URLHost: "http://open.artist.api.max.mgtv.com/")
-        request.startRequest(StarResponse.self) { (response, error) in
+        let requestInfo = MGTVRequestInfo(path: "artist/getArtistListOrderByRankList", host: "http://open.artist.api.max.mgtv.com/")
+        SimpleRequestClient(requestInfo: requestInfo).send(StarResponse.self) { (response, error) in
             guard !(error != nil), let starResponse = response else {
                 templateData.redirectStatus = 3
                 complete(nil, error)
@@ -25,6 +25,5 @@ struct StarDataSource {
             templateData.redirectStatus = 2
             complete(templateData, nil)
         }
-        
     }
 }

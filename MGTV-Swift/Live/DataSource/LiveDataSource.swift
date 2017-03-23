@@ -10,8 +10,8 @@ import Foundation
 
 struct LiveDataSource {
     static func fetchLive(params: [String : Any]?, complete: @escaping CompleteBlock) {
-        let request = MGTVNetwork.shareInstance.request(path: "channel/live", parameters: params, enableCache: true)
-        request.startRequest(TemplateResponse.self) { (response, error) in
+        let requestInfo = MGTVRequestInfo(path: "channel/live", parameters: params)
+        SimpleRequestClient(requestInfo: requestInfo).send(TemplateResponse.self) { (response, error) in
             complete(response, error)
         }
     }

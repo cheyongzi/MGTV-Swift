@@ -11,16 +11,16 @@ import Alamofire
 typealias CompleteBlock = (AnyObject?, Error?) -> Void
 
 struct TemplateDataSource {
-    static func fetchTemplate(params: [String : Any], complete: @escaping CompleteBlock) {
-        let request = MGTVNetwork.shareInstance.request(path: "odin/c1/channel/index", parameters: params, enableCache: true, URLHost: "http://st.bz.mgtv.com/")
-        request.startRequest(TemplateResponse.self) { (response, error) in
+    static func fetchTemplate(_ params: [String : Any], complete: @escaping CompleteBlock) {
+        let requestInfo = MGTVRequestInfo(path: "odin/c1/channel/index", host: "http://st.bz.mgtv.com/", parameters: params)
+        SimpleRequestClient(requestInfo: requestInfo).send(TemplateResponse.self) { (response, error) in
             complete(response, error)
         }
     }
     
     static func fetchChannel() {
-        let request = MGTVNetwork.shareInstance.request(path: "odin/c1/channel/list", parameters: ["type" : "5", "version" : "5.0"], URLHost: "http://mob.bz.mgtv.com/")
-        request.startRequest(ChannelResponse.self) { (response, error) in
+        let requestInfo = MGTVRequestInfo(path: "odin/c1/channel/list", host: "http://mob.bz.mgtv.com/", parameters: ["type" : "5", "version" : "5.0"])
+        SimpleRequestClient(requestInfo: requestInfo).send(ChannelResponse.self) { (response, error) in
             guard error == nil else {
                 return
             }

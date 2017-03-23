@@ -50,8 +50,8 @@ class HomeViewController: UIViewController {
     }
     
     //MARK: - 首页接口的请求
-    func fetch(_ params: [String : Any]) {
-        TemplateDataSource.fetchTemplate(params: params){ [unowned self] (response, error) in
+    func fetch(_ params: Parameters) {
+        TemplateDataSource.fetchTemplate(params) { (response, error) in
             guard let templateResponse = response as? TemplateResponse else {
                 return
             }
