@@ -21,6 +21,8 @@ class BaseModel: Mappable {
         code <- map["code"]
         msg <- map["msg"]
     }
+    
+    
 }
 
 class MappableEx: Mappable {

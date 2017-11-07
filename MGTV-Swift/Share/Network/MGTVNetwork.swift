@@ -39,7 +39,6 @@ struct MGTVRequestInfo {
     }
 }
 
-
 struct SimpleRequestClient: Client, Request {
     typealias RequestInfo = MGTVRequestInfo
     

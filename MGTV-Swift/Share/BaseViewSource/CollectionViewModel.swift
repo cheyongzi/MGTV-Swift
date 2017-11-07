@@ -21,6 +21,9 @@ protocol ViewModelProtocol {
     func cellConfig(_ view: ViewType, datas: [[DataType]], indexPath: IndexPath) -> CellType
 }
 
+typealias CellConfig = (UICollectionView, IndexPath) -> UICollectionViewCell
+typealias ViewConfig = (UICollectionView, IndexPath, String) -> UICollectionReusableView
+
 class CollectionViewModel<T>: NSObject, ViewModelProtocol,CollectionViewProtocol {
 
     typealias DataType = T

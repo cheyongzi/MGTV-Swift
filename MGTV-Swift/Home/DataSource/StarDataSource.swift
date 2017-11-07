@@ -9,6 +9,7 @@
 import Foundation
 
 struct StarDataSource {
+    
     static func fetchStars(params: [String : Any], complete: @escaping CompleteBlock) {
         guard let templateData = params["template"] as? TemplateResponseData else {
             return
